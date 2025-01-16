@@ -8,7 +8,7 @@ function handleButtonClick(msg: string) {
 
 export function UpperBar({ isOpen }: UpperBarProps) {
   return (
-    <div className={`upperbar ${isOpen ? "open" : ""}`}>
+    <div className={`upperbar ${isOpen ? 'open' : ''}`}>
       <div className="upperbar-items">
         <div className="upperbar-item">
           <i className="fa-regular fa-bell"></i>
