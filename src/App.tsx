@@ -1,19 +1,20 @@
-import React, { useState } from 'react'
-import './App.css'
+import React, { useState } from "react";
+import "./App.css";
+import { UpperBar } from "./components/UpperBar";
 
 const App = () => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   // Functionality for a button click action
   const handleButtonClick = (buttonName) => {
-    alert(`${buttonName} clicked!`)
-  }
+    alert(`${buttonName} clicked!`);
+  };
 
   return (
     <div className="app">
       {/* Sidebar */}
       <div
-        className={`sidebar ${isOpen ? 'open' : ''}`}
+        className={`sidebar ${isOpen ? "open" : ""}`}
         onMouseEnter={() => setIsOpen(true)}
         onMouseLeave={() => setIsOpen(false)}
       >
@@ -26,7 +27,7 @@ const App = () => {
             {isOpen && (
               <button
                 className="menu-button"
-                onClick={() => handleButtonClick('Home Button')}
+                onClick={() => handleButtonClick("Home Button")}
               >
                 Home
               </button>
@@ -37,7 +38,7 @@ const App = () => {
             {isOpen && (
               <button
                 className="menu-button"
-                onClick={() => handleButtonClick('Info Button')}
+                onClick={() => handleButtonClick("Info Button")}
               >
                 Info
               </button>
@@ -48,7 +49,7 @@ const App = () => {
             {isOpen && (
               <button
                 className="menu-button"
-                onClick={() => handleButtonClick('Settings Button')}
+                onClick={() => handleButtonClick("Settings Button")}
               >
                 Settings
               </button>
@@ -57,49 +58,13 @@ const App = () => {
         </ul>
       </div>
 
-      {/* Upperbar */}
-      <div className={`upperbar ${isOpen ? 'open' : ''}`}>
-        <div className="upperbar-items">
-          <div className="upperbar-item">
-            <i className="fa-regular fa-bell"></i>
-            <button
-              className="upperbar-button"
-              onClick={() => handleButtonClick('Notifications Button')}
-            >
-              Notifications
-            </button>
-          </div>
-          <div className="upperbar-item">
-            <i className="fa-solid fa-phone"></i>
-            <button
-              className="upperbar-button"
-              onClick={() => handleButtonClick('Contact Button')}
-            >
-              Contact
-            </button>
-          </div>
-          <div className="upperbar-item">
-            <i className="fa-regular fa-user"></i>
-            <button
-              className="upperbar-button"
-              onClick={() => handleButtonClick('Profile Button')}
-            >
-              Profile
-            </button>
-          </div>
-          <div className="upperbar-item">
-            <i className="fa-solid fa-magnifying-glass"></i>
-            <button
-              className="upperbar-button"
-              onClick={() => handleButtonClick('Search Button')}
-            >
-              Search
-            </button>
-          </div>
-        </div>
+      <div className="main-container">
+        {/* Upperbar */}
+        <UpperBar isOpen={isOpen} />
+        <div className="content"></div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
