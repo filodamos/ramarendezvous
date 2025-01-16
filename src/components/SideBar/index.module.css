@@ -1,0 +1,40 @@
+.SideBar {
+  background: linear-gradient(
+    to bottom,
+    #1a3636,
+    #222222
+  ); /* Gradient background */
+  width: 60px; /* Default width when collapsed */
+  height: 100%; /* Full height */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition:
+    width 0.3s ease,
+    background-color 0.3s ease;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+  z-index: 1;
+  .menu_item {
+    .menu_icon {
+      display: block;
+    }
+    .menu_button {
+      display: none;
+    }
+  }
+  &:hover {
+    width: 200px; /* Sidebar width when open */
+    .menu_item {
+      .menu_icon {
+        display: none;
+      }
+      .menu_button {
+        display: inline-grid;
+        grid-template-columns: max-content 1fr;
+        gap: 0.75rem;
+        align-items: center;
+      }
+    }
+  }
+}

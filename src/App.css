@@ -23,12 +23,35 @@
     width 0.3s ease,
     background-color 0.3s ease;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+  z-index: 1;
+  .menu-item {
+    .menu-icon {
+      display: block;
+    }
+    .menu-button {
+      display: none;
+    }
+  }
+  &:hover {
+    width: 200px; /* Sidebar width when open */
+    .menu-item {
+      .menu-icon {
+        display: none;
+      }
+      .menu-button {
+        display: inline-grid;
+        grid-template-columns: max-content 1fr;
+        gap: 0.75rem;
+        align-items: center;
+      }
+    }
+  }
 }
 
 /* Sidebar Expanded */
-.sidebar.open {
-  width: 200px; /* Sidebar width when open */
-}
+/* .sidebar.open { */
+/*   width: 200px; /\* Sidebar width when open *\/ */
+/* } */
 
 /* Logo */
 .logo {
@@ -44,63 +67,63 @@
 }
 
 /* Menu Item */
-.menu-item {
-  display: flex; /* Align icon and text/button in a row */
-  align-items: left; /* Align items vertically */
-  gap: 10px; /* Spacing between icon and button */
-  margin-bottom: 40px; /* Space between items */
-  padding: 1rem 0.5rem; /* Add padding for better spacing */
-  padding-inline: 1rem 50px;
-  border-radius: 40px; /* Rounded edges */
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease; /* Smooth hover effect */
-  cursor: pointer;
-}
+/* .menu-item { */
+/*   display: flex; /\* Align icon and text/button in a row *\/ */
+/*   align-items: left; /\* Align items vertically *\/ */
+/*   gap: 10px; /\* Spacing between icon and button *\/ */
+/*   margin-bottom: 40px; /\* Space between items *\/ */
+/*   padding: 1rem 0.5rem; /\* Add padding for better spacing *\/ */
+/*   padding-inline: 1rem 50px; */
+/*   border-radius: 40px; /\* Rounded edges *\/ */
+/*   transition: */
+/*     background-color 0.3s ease, */
+/*     color 0.3s ease; /\* Smooth hover effect *\/ */
+/*   cursor: pointer; */
+/* } */
 
 /* Button Styles for Sidebar */
-.menu-button {
-  border: none; /* Remove default border */
-  background-color: transparent; /* Transparent background */
-  color: white; /* Text color for better visibility */
-  font-size: 1rem; /* Button text size */
-  font-weight: bold; /* Make button text bold */
-  cursor: pointer; /* Pointer cursor on hover */
-  transition:
-    color 0.3s ease,
-    background-color 0.3s ease; /* Smooth effects */
-}
+/* .menu-button { */
+/*   border: none; /\* Remove default border *\/ */
+/*   background-color: transparent; /\* Transparent background *\/ */
+/*   color: white; /\* Text color for better visibility *\/ */
+/*   font-size: 1rem; /\* Button text size *\/ */
+/*   font-weight: bold; /\* Make button text bold *\/ */
+/*   cursor: pointer; /\* Pointer cursor on hover *\/ */
+/*   transition: */
+/*     color 0.3s ease, */
+/*     background-color 0.3s ease; /\* Smooth effects *\/ */
+/* } */
 
-.menu-button:hover {
-  color: #f0c674; /* Highlight text color on hover */
-  background-color: rgba(
-    255,
-    255,
-    255,
-    0.1
-  ); /* Slight background change on hover */
-  padding: 0.5rem 1.2rem; /* Adjust padding for better visual feedback */
-  border-radius: 25px; /* Rounded appearance on hover */
-}
+/* .menu-button:hover { */
+/*   color: #f0c674; /\* Highlight text color on hover *\/ */
+/*   background-color: rgba( */
+/*     255, */
+/*     255, */
+/*     255, */
+/*     0.1 */
+/*   ); /\* Slight background change on hover *\/ */
+/*   padding: 0.5rem 1.2rem; /\* Adjust padding for better visual feedback *\/ */
+/*   border-radius: 25px; /\* Rounded appearance on hover *\/ */
+/* } */
 
-.menu-item:hover {
-  background-color: #444444; /* Slightly darker background for hover */
-  color: #f0f0f0; /* Text color on hover */
-}
+/* .menu-item:hover { */
+/*   background-color: #444444; /\* Slightly darker background for hover *\/ */
+/*   color: #f0f0f0; /\* Text color on hover *\/ */
+/* } */
 
-.menu-item:focus {
-  outline: 2px solid #ffffff; /* Focused outline for keyboard navigation */
-  background-color: #555555; /* Darker background color on focus */
-}
+/* .menu-item:focus { */
+/*   outline: 2px solid #ffffff; /\* Focused outline for keyboard navigation *\/ */
+/*   background-color: #555555; /\* Darker background color on focus *\/ */
+/* } */
 
-.menu-item.active {
-  background-color: #666666; /* Background for active state */
-  color: #ffffff;
-}
+/* .menu-item.active { */
+/*   background-color: #666666; /\* Background for active state *\/ */
+/*   color: #ffffff; */
+/* } */
 
-.menu-item i {
-  font-size: 1.2rem; /* Icon size */
-}
+/* .menu-item i { */
+/*   font-size: 1.2rem; /\* Icon size *\/ */
+/* } */
 
 /* Upperbar styles */
 /* .upperbar { */
@@ -121,6 +144,7 @@
   grid-template-rows: 60px 1fr;
   .upperbar {
     display: grid;
+    background: rgba(138, 103, 63, 0.5);
     .upperbar-items {
       display: grid;
       /* grid-template-columns: repeat(4, max-content); */
