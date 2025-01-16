@@ -1,0 +1,143 @@
+/* General App Styles */
+.app {
+  display: flex; /* Establish a flexbox container */
+  height: 100vh; /* Full viewport height */
+  width: 100vw; /* Full viewport width (to avoid overflow issues) */
+  flex-direction: row; /* Align items horizontally */
+}
+
+/* Sidebar styles */
+.sidebar {
+  background: linear-gradient(to bottom, #1a3636, #222222); /* Gradient background */
+  width: 60px; /* Default width when collapsed */
+  height: 100%; /* Full height */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: width 0.3s ease, background-color 0.3s ease;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+}
+
+/* Sidebar Expanded */
+.sidebar.open {
+  width: 200px; /* Sidebar width when open */
+}
+
+/* Logo */
+.logo {
+  margin-top: 40px;
+  margin-bottom: 50px;
+}
+
+.logo a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Menu Item */
+.menu-item {
+  display: flex; /* Align icon and text/button in a row */
+  align-items: left; /* Align items vertically */
+  gap: 10px; /* Spacing between icon and button */
+  margin-bottom: 40px; /* Space between items */
+  padding: 1rem 0.5rem; /* Add padding for better spacing */
+  padding-inline: 1rem 50px;
+  border-radius: 40px; /* Rounded edges */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth hover effect */
+  cursor: pointer;
+}
+
+/* Button Styles for Sidebar */
+.menu-button {
+  border: none; /* Remove default border */
+  background-color: transparent; /* Transparent background */
+  color: white; /* Text color for better visibility */
+  font-size: 1rem; /* Button text size */
+  font-weight: bold; /* Make button text bold */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: color 0.3s ease, background-color 0.3s ease; /* Smooth effects */
+}
+
+.menu-button:hover {
+  color: #f0c674; /* Highlight text color on hover */
+  background-color: rgba(255, 255, 255, 0.1); /* Slight background change on hover */
+  padding: 0.5rem 1.2rem; /* Adjust padding for better visual feedback */
+  border-radius: 25px; /* Rounded appearance on hover */
+}
+
+.menu-item:hover {
+  background-color: #444444; /* Slightly darker background for hover */
+  color: #f0f0f0; /* Text color on hover */
+}
+
+.menu-item:focus {
+  outline: 2px solid #ffffff; /* Focused outline for keyboard navigation */
+  background-color: #555555; /* Darker background color on focus */
+}
+
+.menu-item.active {
+  background-color: #666666; /* Background for active state */
+  color: #ffffff;
+}
+
+.menu-item i {
+  font-size: 1.2rem; /* Icon size */
+}
+
+/* Upperbar styles */
+.upperbar {
+  display: flex;
+  flex-direction: row;
+  height: 50px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(138, 103, 63, 0.5); /* Transparent brown tone */
+  transition: margin-left 0.3s ease, width 0.3s ease; /* Smooth animations */
+  margin-left: 60px; /* Default position when the sidebar is collapsed */
+  width: calc(100% - 60px); /* Adjust width */
+}
+
+.sidebar.open ~ .upperbar {
+  margin-left: 200px; /* Adjust when the sidebar is expanded */
+  width: calc(100% - 200px); /* Adjust upperbar width accordingly */
+}
+
+.upperbar-items {
+  display: flex; /* Horizontal layout */
+  gap: 2rem; /* Space between upperbar items */
+  justify-content: space-around; /* Spread items evenly */
+  align-items: center; /* Center vertically */
+  width: 100%; /* Fill available space */
+  padding: 0 10px; /* Padding on sides */
+}
+
+.upperbar-item {
+  display: flex; /* Align icon and button horizontally */
+  align-items: center; /* Vertical alignment */
+  gap: 10px; /* Space between icon and button */
+  padding: 0 10px;
+  font-size: 1rem; /* Item text size */
+  color: white;
+}
+
+/* Button Styles for Upperbar */
+.upperbar-button {
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border for buttons */
+  background-color: transparent; /* Transparent background */
+  color: white; /* Button text color */
+  padding: 0.3rem 1rem; /* Add padding for better appearance */
+  border-radius: 20px; /* Rounded corners for buttons */
+  font-size: 0.9rem; /* Slightly smaller font size */
+  font-weight: bold; /* Bold text for buttons */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth hover effects */
+}
+
+.upperbar-button:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Light background on hover */
+  color: #f0c674; /* Highlight color on hover */
+}
