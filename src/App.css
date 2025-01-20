@@ -7,46 +7,7 @@
 }
 
 /* Sidebar styles */
-.sidebar {
-  background: linear-gradient(
-    to bottom,
-    #1a3636,
-    #222222
-  ); /* Gradient background */
-  width: 60px; /* Default width when collapsed */
-  height: 100%; /* Full height */
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition:
-    width 0.3s ease,
-    background-color 0.3s ease;
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
-  z-index: 1;
-  .menu-item {
-    .menu-icon {
-      display: block;
-    }
-    .menu-button {
-      display: none;
-    }
-  }
-  &:hover {
-    width: 200px; /* Sidebar width when open */
-    .menu-item {
-      .menu-icon {
-        display: none;
-      }
-      .menu-button {
-        display: inline-grid;
-        grid-template-columns: max-content 1fr;
-        gap: 0.75rem;
-        align-items: center;
-      }
-    }
-  }
-}
+
 
 /* Sidebar Expanded */
 /* .sidebar.open { */
@@ -54,17 +15,7 @@
 /* } */
 
 /* Logo */
-.logo {
-  margin-top: 40px;
-  margin-bottom: 50px;
-}
 
-.logo a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 1.5rem;
-  font-weight: bold;
-}
 
 /* Menu Item */
 /* .menu-item { */
@@ -142,17 +93,6 @@
 .main-container {
   display: grid;
   grid-template-rows: 60px 1fr;
-  .upperbar {
-    display: grid;
-    background: rgba(138, 103, 63, 0.5);
-    .upperbar-items {
-      display: grid;
-      /* grid-template-columns: repeat(4, max-content); */
-      grid-auto-flow: column;
-      grid-auto-columns: max-content;
-      justify-content: end;
-    }
-  }
 }
 
 .sidebar.open ~ .upperbar {
@@ -169,31 +109,5 @@
 /*   padding: 0 10px; /\* Padding on sides *\/ */
 /* } */
 
-.upperbar-item {
-  display: flex; /* Align icon and button horizontally */
-  align-items: center; /* Vertical alignment */
-  gap: 10px; /* Space between icon and button */
-  padding: 0 10px;
-  font-size: 1rem; /* Item text size */
-  color: white;
-}
 
-/* Button Styles for Upperbar */
-.upperbar-button {
-  border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border for buttons */
-  background-color: transparent; /* Transparent background */
-  color: white; /* Button text color */
-  padding: 0.3rem 1rem; /* Add padding for better appearance */
-  border-radius: 20px; /* Rounded corners for buttons */
-  font-size: 0.9rem; /* Slightly smaller font size */
-  font-weight: bold; /* Bold text for buttons */
-  cursor: pointer; /* Pointer cursor on hover */
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease; /* Smooth hover effects */
-}
 
-.upperbar-button:hover {
-  background-color: rgba(255, 255, 255, 0.2); /* Light background on hover */
-  color: #f0c674; /* Highlight color on hover */
-}

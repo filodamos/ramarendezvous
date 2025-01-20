@@ -1,25 +1,30 @@
-type UpperBarProps = {
-  isOpen: boolean;
-};
+import styles from './index.module.css'
 
 function handleButtonClick(msg: string) {
   console.log(msg);
 }
 
-export function UpperBar({ isOpen }: UpperBarProps) {
+function UpperbarItem ({ label, iconClass }: { label: string; iconClass: string }) {
   return (
-    <div className={`upperbar ${isOpen ? 'open' : ''}`}>
-      <div className="upperbar-items">
-        <div className="upperbar-item">
-          <i className="fa-regular fa-bell"></i>
-          <button
-            className="upperbar-button"
-            onClick={() => handleButtonClick("Notifications Button")}
-          >
-            Notifications
-          </button>
-        </div>
-        <div className="upperbar-item">
+    <div className="styles.upperbar-item">
+      <button
+        className="styles.upperbar-button"
+        onClick={() => handleButtonClick(`${label} Button`)}
+      >
+        <i className={iconClass} />
+        {label}
+      </button>
+    </div>
+  )
+}
+export function UpperBar( ) {
+  return (
+    <div className={styles.UpperBar}>
+      <div className="styles.upperbar-items">
+       
+        <UpperbarItem label="Notifications" iconClass="fa-regular fa-bell" />
+        
+        {/* <div className="upperbar-item">
           <i className="fa-solid fa-phone"></i>
           <button
             className="upperbar-button"
@@ -45,7 +50,7 @@ export function UpperBar({ isOpen }: UpperBarProps) {
           >
             Search
           </button>
-        </div>
+        </div> */}
       </div>
     </div>
   );

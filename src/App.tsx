@@ -4,13 +4,13 @@ import { UpperBar } from "./components/UpperBar";
 import { SideBar } from "./components/SideBar";
 
 const App = () => {
-  const [isOpen, setIsOpen] = useState(false);
+
 
   return (
     <div className="app">
       <SideBar />
       <div className="main-container">
-        <UpperBar isOpen={isOpen} />
+        <UpperBar/>
         <div className="content"></div>
       </div>
     </div>
