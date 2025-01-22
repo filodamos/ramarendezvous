@@ -1,5 +1,5 @@
 .UpperBar {
-  background: rgba(138, 103, 63, 0.5);
+  background: rgba(122, 68, 5, 0.37);
 
   .upperbar_items {
     display: grid; /*Ensure this is a grid container */
@@ -7,17 +7,15 @@
       4,
       1fr
     ); /* Define 4 columns based on content size */
-    grid-gap: 20px; /* Set a gap between the items */
+    grid-gap: 5px; /* Set a gap between the items */
     align-items: center; /* Vertically align the items */
-    padding: 0 20px;
+    padding: 0 10px;
     font-size: 1rem;
     color: white;
     margin-top: 12px;
 
     .upperbar_button {
-      grid-column: 4 end; /* Place this button in the 4th column */
-       
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.795);
       background-color: transparent;
       color: white;
       padding: 0.4rem 1.2rem;
@@ -26,16 +24,36 @@
       font-weight: bold;
       cursor: pointer;
       transition: background-color 0.3s ease, color 0.3s ease;
-      max-width: 150px; /* Limit the width of the button without shrinking content */
+      max-width: 150px;
       width: auto;
     }
-    .upperbar_button i {
-      margin-right: 8px; /* Add space between the icon and the label */
-    }
+
     .upperbar_button:hover {
-      background-color: rgba(34, 39, 29, 0.178);
+      background-color: rgba(34, 39, 29, 0.24);
       color: #f0e36d;
       border: 1px solid #055e1bb4;
+    }
+
+    .upperbar_button i {
+      margin-right: 8px;
+    }
+    .user_button {
+      grid-column: 1 /2; /* Position in the last column */
+      justify-self: center; /* Align to the end of the column */
+    }
+    /* Specific positions for the buttons */
+    .notifications_button {
+      grid-column: 2/3; /* Position in the first column */
+      justify-self: center; /* Align to the start of the column */
+    }
+    .contact_button {
+      grid-column: 3/ 4; /* Position in the last column */
+      justify-self: center; /* Align to the end of the column */
+    }
+
+    .search_button {
+      grid-column: 4/5; /* Position in the first column */
+      justify-self: center; /* Align to the start of the column */
     }
   }
 }

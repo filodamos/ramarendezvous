@@ -7,55 +7,47 @@ function handleButtonClick(msg: string) {
 function UpperbarItem({
   label,
   iconClass,
+  additionalClass = '',
 }: {
   label: string
   iconClass: string
+  additionalClass?: string
 }) {
   return (
-    
-      <button
-        className={styles.upperbar_button}
-        onClick={() => handleButtonClick(`${label} Button`)}
-      >
-        <i className={iconClass} />
-        {label}
-      </button>
-    
+    <button
+      className={`${styles.upperbar_button} ${additionalClass}`} // Combine global & scoped classes
+      onClick={() => handleButtonClick(`${label} Button`)}
+    >
+      <i className={iconClass} />
+      {label}
+    </button>
   )
 }
+
 export function UpperBar() {
   return (
     <div className={styles.UpperBar}>
       <div className={styles.upperbar_items}>
-        <UpperbarItem label="Notifications" iconClass="fa-regular fa-bell" />
-
-        {/* <div className="upperbar-item">
-          <i className="fa-solid fa-phone"></i>
-          <button
-            className="upperbar-button"
-            onClick={() => handleButtonClick("Contact Button")}
-          >
-            Contact
-          </button>
-        </div>
-        <div className="upperbar-item">
-          <i className="fa-regular fa-user"></i>
-          <button
-            className="upperbar-button"
-            onClick={() => handleButtonClick("Profile Button")}
-          >
-            Profile
-          </button>
-        </div>
-        <div className="upperbar-item">
-          <i className="fa-solid fa-magnifying-glass"></i>
-          <button
-            className="upperbar-button"
-            onClick={() => handleButtonClick("Search Button")}
-          >
-            Search
-          </button>
-        </div> */}
+        <UpperbarItem
+          label="User"
+          iconClass="fa-regular fa-user"
+          additionalClass={styles.user_button}
+        />
+        <UpperbarItem
+          label="Notifications"
+          iconClass="fa-regular fa-bell"
+          additionalClass={styles.notifications_button}
+        />
+        <UpperbarItem
+          label="Contact"
+          iconClass="fa-solid fa-phone"
+          additionalClass={styles.contact_button}
+        />
+        <UpperbarItem
+          label="Search"
+          iconClass="fa-solid fa-magnifying-glass"
+          additionalClass={styles.search_button}
+        />
       </div>
     </div>
   )
