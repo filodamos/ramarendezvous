@@ -1,47 +1,35 @@
 .UpperBar {
-  display: grid;
   background: rgba(138, 103, 63, 0.5);
 
-  .upperbar-items {
-    display: grid;
-    /* grid-template-columns: repeat(4, max-content); */
-    grid-auto-flow: column;
-    grid-auto-columns: max-content;
-    justify-content: end;
 
-    .upperbar-item {
-      display: grid; /* Align icon and button horizontally */
-      align-items: center; /* Vertical alignment */
-      gap: 10px; /* Space between icon and button */
-      padding: 0 10px;
-      font-size: 1rem; /* Item text size */
+  .upperbar_items {
+     display: grid;  /*Ensure this is a grid container */
+    grid-template-columns: repeat(4, 1fr); /* Define 4 columns based on content size */
+    grid-gap: 20px; /* Set a gap between the items */
+    align-items: center; /* Vertically align the items */
+    padding: 0 10px;
+    font-size: 1rem;
+    color: white;
+    gap: 10px;
+
+    .upperbar_button {
+      grid-column: 4; /* Place this button in the 4th column */
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background-color: transparent;
       color: white;
-      
-      .menu_icon {
-        display: none;
-      }
-
-      .upperbar-button {
-        border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border for buttons */
-        background-color: transparent; /* Transparent background */
-        color: white; /* Button text color */
-        padding: 0.3rem 1rem; /* Add padding for better appearance */
-        border-radius: 20px; /* Rounded corners for buttons */
-        font-size: 0.9rem; /* Slightly smaller font size */
-        font-weight: bold; /* Bold text for buttons */
-        cursor: pointer; /* Pointer cursor on hover */
-        transition: background-color 0.3s ease, color 0.3s ease; /* Smooth hover effects */
-
-        &:hover {
-          background-color: rgba(
-            255,
-            255,
-            255,
-            0.2
-          ); /* Light background on hover */
-          color: #f0c674; /* Highlight color on hover */
-        }
-      }
+      padding: 0.3rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .upperbar_button:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      color: #f0c674;
     }
   }
+
+
+
 }

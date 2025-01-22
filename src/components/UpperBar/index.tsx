@@ -1,29 +1,34 @@
 import styles from './index.module.css'
 
 function handleButtonClick(msg: string) {
-  console.log(msg);
+  console.log(msg)
 }
 
-function UpperbarItem ({ label, iconClass }: { label: string; iconClass: string }) {
+function UpperbarItem({
+  label,
+  iconClass,
+}: {
+  label: string
+  iconClass: string
+}) {
   return (
-    <div className="styles.upperbar-item">
+    
       <button
-        className="styles.upperbar-button"
+        className={styles.upperbar_button}
         onClick={() => handleButtonClick(`${label} Button`)}
       >
         <i className={iconClass} />
         {label}
       </button>
-    </div>
+    
   )
 }
-export function UpperBar( ) {
+export function UpperBar() {
   return (
     <div className={styles.UpperBar}>
-      <div className="styles.upperbar-items">
-       
+      <div className={styles.upperbar_items}>
         <UpperbarItem label="Notifications" iconClass="fa-regular fa-bell" />
-        
+
         {/* <div className="upperbar-item">
           <i className="fa-solid fa-phone"></i>
           <button
@@ -53,5 +58,5 @@ export function UpperBar( ) {
         </div> */}
       </div>
     </div>
-  );
+  )
 }
