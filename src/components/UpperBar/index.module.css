@@ -1,35 +1,41 @@
 .UpperBar {
   background: rgba(138, 103, 63, 0.5);
 
-
   .upperbar_items {
-     display: grid;  /*Ensure this is a grid container */
-    grid-template-columns: repeat(4, 1fr); /* Define 4 columns based on content size */
+    display: grid; /*Ensure this is a grid container */
+    grid-template-columns: repeat(
+      4,
+      1fr
+    ); /* Define 4 columns based on content size */
     grid-gap: 20px; /* Set a gap between the items */
     align-items: center; /* Vertically align the items */
-    padding: 0 10px;
+    padding: 0 20px;
     font-size: 1rem;
     color: white;
-    gap: 10px;
+    margin-top: 12px;
 
     .upperbar_button {
-      grid-column: 4; /* Place this button in the 4th column */
+      grid-column: 4 end; /* Place this button in the 4th column */
+       
       border: 1px solid rgba(255, 255, 255, 0.2);
       background-color: transparent;
       color: white;
-      padding: 0.3rem 1rem;
+      padding: 0.4rem 1.2rem;
       border-radius: 20px;
       font-size: 0.9rem;
       font-weight: bold;
       cursor: pointer;
       transition: background-color 0.3s ease, color 0.3s ease;
+      max-width: 150px; /* Limit the width of the button without shrinking content */
+      width: auto;
+    }
+    .upperbar_button i {
+      margin-right: 8px; /* Add space between the icon and the label */
     }
     .upperbar_button:hover {
-      background-color: rgba(255, 255, 255, 0.2);
-      color: #f0c674;
+      background-color: rgba(34, 39, 29, 0.178);
+      color: #f0e36d;
+      border: 1px solid #055e1bb4;
     }
   }
-
-
-
 }
