@@ -11,9 +11,7 @@
   display: grid;
   grid-template-rows: auto 1fr auto; /* Allows spacing with top, center, bottom areas */
   justify-items: center;
-  transition:
-    width 0.3s ease,
-    background-color 0.3s ease;
+  transition: width 0.3s ease, background-color 0.3s ease;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
   z-index: 10;
   .logo {
@@ -27,8 +25,8 @@
   }
 
   .logo a {
-    color: #fff;
-    text-decoration: none;
+    color: #f8cb04ef;
+    text-decoration: underline dotted;
     font-size: 1.5rem;
     font-weight: bold;
   }
@@ -39,19 +37,15 @@
     height: 100%; /* Ensures it uses the full height of the container */
     width: 100%; /* Add this to match the width of the sidebar */
     .menu_icon {
-  
       display: grid;
       align-items: center; /* Centers vertically */
       justify-items: center; /* Centers horizontally */
       height: 100%;
       width: 100%; /* Ensure it uses the full width of .menu_item */
-
-      
     }
     .menu_button {
       display: none;
     }
-
   }
   &:hover {
     width: 200px; /* Sidebar width when open */

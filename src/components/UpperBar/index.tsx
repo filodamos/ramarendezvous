@@ -4,6 +4,28 @@ function handleButtonClick(msg: string) {
   console.log(msg)
 }
 
+function SearchBar({
+  iconClass,
+  placeholder = 'Search...',
+}: {
+  iconClass: string
+  placeholder?: string
+}) {
+  return (
+    <div className={styles.search_wrapper}>
+      <input
+        type="text"
+        className={styles.search_input}
+        placeholder={placeholder}
+      />
+      <button className={styles.upperbar_button}>
+        <i className={iconClass} />
+        Search
+      </button>
+    </div>
+  )
+}
+
 function UpperbarItem({
   label,
   iconClass,
@@ -15,7 +37,7 @@ function UpperbarItem({
 }) {
   return (
     <button
-      className={`${styles.upperbar_button} ${additionalClass}`} // Combine global & scoped classes
+      className={`${styles.upperbar_button} ${additionalClass}`}
       onClick={() => handleButtonClick(`${label} Button`)}
     >
       <i className={iconClass} />
@@ -28,11 +50,7 @@ export function UpperBar() {
   return (
     <div className={styles.UpperBar}>
       <div className={styles.upperbar_items}>
-        <UpperbarItem
-          label="User"
-          iconClass="fa-regular fa-user"
-          additionalClass={styles.user_button}
-        />
+        <SearchBar iconClass="fa-solid fa-magnifying-glass" />
         <UpperbarItem
           label="Notifications"
           iconClass="fa-regular fa-bell"
@@ -44,9 +62,9 @@ export function UpperBar() {
           additionalClass={styles.contact_button}
         />
         <UpperbarItem
-          label="Search"
-          iconClass="fa-solid fa-magnifying-glass"
-          additionalClass={styles.search_button}
+          label="User"
+          iconClass="fa-regular fa-user"
+          additionalClass={styles.user_button}
         />
       </div>
     </div>
