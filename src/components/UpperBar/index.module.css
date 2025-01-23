@@ -1,6 +1,5 @@
 .UpperBar {
   background: rgba(122, 68, 5, 0.37);
-  
 }
 
 .upperbar_items {
@@ -18,7 +17,8 @@
 }
 
 /* General button styles */
-.upperbar_button {
+.UpperbarItem,
+.SearchBar input {
   border: 1px solid rgba(255, 255, 255, 0.795);
   background-color: transparent;
   color: white;
@@ -27,69 +27,43 @@
   font-size: 0.9rem;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
   max-width: 150px;
   width: auto;
-}
-
-.upperbar_button:hover {
-  background-color: rgba(34, 39, 29, 0.24);
-  color: #f0e36d;
-  border: 1px solid #055e1bb4;
-}
-
-.upperbar_button i {
-  margin-right: 8px;
+  &:hover {
+    background-color: rgba(34, 39, 29, 0.24);
+    color: #f0e36d;
+    border: 1px solid #055e1bb4;
+  }
+  & i {
+    margin-right: 8px;
+  }
 }
 
 /* Styling specific to the search button and expanding search bar */
-.search_wrapper {
+.SearchBar {
   position: relative; /* Contain elements */
-  overflow: hidden; /* Hide the input when collapsed */
   height: 2.4rem; /* Same height as buttons */
   display: grid;
-  /* grid-template-columns: 1fr auto; Ensure the search input takes up the space next to the button */
   align-items: right;
   overflow: visible;
   text-decoration: bold;
-
-  .search_input {
-    position: absolute;
-    top: 0;
-    left: 100%; /* Position it outside to the right by default */
-    width: 0; /* Start with no width */
-    height: 100%;
-    border: none;
-    padding: 0 10px;
-    background-color: rgba(34, 39, 29, 0.24);
-    border: 1px solid #055e1bb4;
-    color: #f0e36d;
-
-    border-radius: 20px;
-    opacity: 0; /* Invisible when not expanded */
-    pointer-events: none; /* Can't interact with it initially */
-    transition: width 0.3s ease, left 0.3s ease, opacity 0.3s ease; /* Smooth expansion and visibility */
-    font-size: 1rem;
-
+  transition: max-width 0.3s ease-out;
+  width: 400px;
+  max-width: 250px;
+  input {
+    max-width: 250px;
     &::placeholder {
       text-decoration: bolder;
       color: #f0e36d;
     }
   }
+  &:hover {
+    max-width: 400px;
+    & input {
+      max-width: 400px;
+    }
+  }
 }
-
-.search_wrapper:hover .search_input {
-  width: 200px; /* Expand the input width on hover */
-  left: -113px; /* Slide the input from right to left */
-  opacity: 1;
-  z-index: 1;  /* Make the input visible */
-  pointer-events: auto; /* Allow interaction with the input */
-}
-
-
-.search_wrapper:hover .upperbar_button {
-  opacity: 0;
-  pointer-events: none;  /* Prevent interaction with the button when it's hidden */ 
-  transition: visibility 0.3s ease, opacity 0.3s ease;
-}
-
