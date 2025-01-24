@@ -1,64 +1,73 @@
 .SideBar {
-  background: linear-gradient(
-    to bottom,
-    #1a3636,
-    #222222
-  ); /* Gradient background */
-
-  width: 60px; /* Default width when collapsed */
+  background: linear-gradient(to bottom, #1a3636, #222222); /* Gradient background */
+  width: 70px; /* Default width when collapsed */
   height: 100%; /* Full height */
   color: white;
   display: grid;
-  grid-template-rows: auto 1fr auto; /* Allows spacing with top, center, bottom areas */
-  justify-items: center;
+  grid-auto-flow: row; /* Items arranged in rows */
+  grid-auto-rows: max-content; /* Adjust rows based on content size */
+  justify-content: center; /* Align items to the center */
+  align-items: center;
   transition: width 0.3s ease, background-color 0.3s ease;
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3); /* Shadow for depth */
   z-index: 10;
+
   .logo {
-    display: grid;
-    /* flex-direction: column; Ensures any vertical content stays vertically aligned */
-    align-items: center; /* Centers horizontally */
-    justify-content: center; /* Centers vertically */
     margin-top: 10px;
     width: 100%;
     height: 100%;
+    
+    & a {
+      color: #f8cb04ef;
+      text-decoration: underline dotted;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
   }
 
-  .logo a {
-    color: #f8cb04ef;
-    text-decoration: underline dotted;
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-  .menu_item {
-    display: grid;
-    justify-items: center; /* Centers the icon horizontally */
-    align-items: center; /* Centers the icon vertically */
-    height: 100%; /* Ensures it uses the full height of the container */
-    width: 100%; /* Add this to match the width of the sidebar */
-    .menu_icon {
-      display: grid;
-      align-items: center; /* Centers vertically */
-      justify-items: center; /* Centers horizontally */
-      height: 100%;
-      width: 100%; /* Ensure it uses the full width of .menu_item */
+  .toggle_button {
+    gap: 10px;
+    cursor: pointer;
+    padding: 10px;
+    background:none;
+    border: none; 
+
+    .container {
+      display: grid;           /* Grid for vertical bars */
+      grid-template-rows: repeat(3, 5px); /* Three rows, each 5px tall (the height of each bar) */
+      grid-gap: 4px;           /* Space between the bars */
+      height: 22px;            /* Total height */
+      width: 35px;             /* Hamburger width */
+      position: relative;  
+      
+      .bar1, .bar2, .bar3 {
+        width: 100%;
+        height: 5px;             /* Height of each individual bar */
+        background-color:#f8cb04ef; /* Visible white color */
+        border-radius: 5px;      /* Rounded edges for cleaner look */
+        transition: transform 0.4s ease, opacity 0.4s ease; /* Smooth transitions */ 
+
+      }        
+
+    }      
+    .change .bar1 {
+      transform: translateY(7px) rotate(45deg); /* Rotate bar1 */
     }
-    .menu_button {
-      display: none;
+
+    .change  .bar2 {
+      opacity: 0; /* Hide bar2 when the hamburger is toggled */
+    }
+
+    .change  .bar3 {
+      transform: translateY(-7px) rotate(-45deg); /* Rotate bar3 */
     }
   }
-  &:hover {
-    width: 200px; /* Sidebar width when open */
-    .menu_item {
-      .menu_icon {
-        display: none;
-      }
-      .menu_button {
-        display: inline-grid;
-        grid-template-columns: max-content 1fr;
-        gap: 0.75rem;
-        align-items: center;
-      }
-    }
+
+
+  &[data-sidebaropen= "true"]{
+    width: 200px;
+
   }
+
+
 }
