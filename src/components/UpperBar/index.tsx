@@ -1,29 +1,29 @@
-import styles from "./index.module.css";
+import styles from './index.module.css'
 
 function handleButtonClick(msg: string) {
-  console.log(msg);
+  console.log(msg)
 }
 
 function SearchBar({
   iconClass,
-  placeholder = "Search...",
+  placeholder = 'Search...',
 }: {
-  iconClass: string;
-  placeholder?: string;
+  iconClass: string
+  placeholder?: string
 }) {
   return (
     <div className={styles.SearchBar}>
       <input type="text" placeholder={placeholder} />
     </div>
-  );
+  )
 }
 
 function UpperbarItem({
   label,
   iconClass,
 }: {
-  label: string;
-  iconClass: string;
+  label: string
+  iconClass: string
 }) {
   return (
     <button
@@ -33,12 +33,15 @@ function UpperbarItem({
       <i className={iconClass} />
       {label}
     </button>
-  );
+  )
 }
 
 export function UpperBar() {
   return (
     <div className={styles.UpperBar}>
+      <div className={styles.logo}>
+        <a href="/">RID</a>
+      </div>
       <div className={styles.upperbar_items}>
         <SearchBar iconClass="fa-solid fa-magnifying-glass" />
         <UpperbarItem label="Notifications" iconClass="fa-regular fa-bell" />
@@ -46,5 +49,5 @@ export function UpperBar() {
         <UpperbarItem label="User" iconClass="fa-regular fa-user" />
       </div>
     </div>
-  );
+  )
 }

@@ -1,19 +1,64 @@
 .UpperBar {
   background: rgba(122, 68, 5, 0.37);
+  display: grid; /* Grid container */
+  grid-template-columns: auto auto;  /* First column for logo, second for buttons */
+  align-items: center;  /* Vertically centers elements */
+  padding: 0 10px;
 }
+
+.logo {
+  justify-self: center;
+  align-items: center;
+  
+  & a {
+    font-family: 'Montserrat', 'Arial', sans-serif;  /* Modern font */
+    color: #1a3636;  /* Dark gray text */
+      /* Yellow underline with thickness */
+     /* Position the underline through the middle */
+    font-size: 2.0rem;  /* Bigger font size */
+    font-weight: 600;  /* Bold but not too heavy */
+    letter-spacing: 0.2rem;  /* Spacing between letters */
+    position: relative;  /* Positioning the underline for animation */
+    transition: color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  /* Add a smooth highlight underline animation effect */
+  & a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -0.2em;  /* Adjust positioning to enhance underline visibility */
+    width: 0%;
+    height: 2px;
+    background-color: #f8cb04;  /* Yellow underline */
+    transition: width 0.3s ease-out;  /* Animate the underline expansion */
+  }
+
+  & a:hover {
+    color: #f8cb04;  /* Change text color on hover */
+    transform: scale(1.1);  /* Slightly enlarge on hover */
+    text-decoration: none;  /* Remove the default underline */
+  }
+
+  & a:hover::after {
+    width: 100%;  /* Expand underline to the full width of the text */
+  }
+}
+
 
 .upperbar_items {
   display: grid; /* Grid layout for the buttons */
   grid-auto-flow: column; /* Items arranged in columns */
   grid-auto-columns: max-content; /* Adjust columns based on content size */
-  justify-content: end; /* Align buttons to the right */
-  align-items: center; /* Vertically center the buttons */
+  justify-content: end;
+  align-items: center; 
   grid-gap: 5px; /* Space between items */
   padding: 0 10px;
   font-size: 1rem;
   color: white;
-  margin-top: 12px;
+
   overflow: visible;
+
 }
 
 /* General button styles */
@@ -27,9 +72,7 @@
   font-size: 0.9rem;
   font-weight: bold;
   cursor: pointer;
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
   max-width: 150px;
   width: auto;
   &:hover {

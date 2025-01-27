@@ -1,16 +1,22 @@
 import React, { useState } from 'react'
 import styles from './index.module.css'
 
-// MenuItem component
-function MenuItem({ label, iconClass }) {
-  return (
-    <div className={styles.menu_item}>
-      <i className={`${styles.menu_icon} ${iconClass}`} />
-      <span className={styles.menu_label}>{label}</span>
-    </div>
-  )
+function handleButtonClick(msg: string) {
+  console.log(msg)
 }
 
+// MenuItem component
+function MenuItem({ label, iconClass }: { label: string; iconClass: string }) {
+  return (
+    <button
+      className={styles.menu_item}
+      onClick={() => handleButtonClick(`${label} Button`)}
+    >
+      <i className={iconClass} />
+      {label}
+    </button>
+  )
+}
 // SideBar component with hamburger button
 export function SideBar() {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false)
@@ -30,16 +36,14 @@ export function SideBar() {
           <div className={styles.bar3}></div>
         </div>
       </button>
-      <div className={styles.logo}>
-        <a href="/">RID</a>
-      </div>
-      {sidebarOpen && (
         <div className={styles.content}>
           <ul className={styles.nav_links}>
             <MenuItem label="Home" iconClass="fa-solid fa-house-chimney" />
+            <MenuItem label="Info" iconClass="fa-regular fa-clipboard" />
+            <MenuItem label="Settings" iconClass="fa-solid fa-gears" />
           </ul>
         </div>
-      )}
+     
     </div>
   )
 }
