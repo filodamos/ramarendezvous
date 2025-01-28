@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import "./App.css";
-import { UpperBar } from "./components/UpperBar";
+import { ContentBoxes } from "./components/ContentBoxes";
+import {UpperBar } from "./components/UpperBar";
 import { SideBar } from "./components/SideBar";
+
 
 const App = () => {
 
@@ -11,7 +13,9 @@ const App = () => {
       <SideBar />
       <div className="main-container">
         <UpperBar/>
-        <div className="content"></div>
+        <div className="content">
+          <ContentBoxes />
+        </div>
       </div>
     </div>
   );

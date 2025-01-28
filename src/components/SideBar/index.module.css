@@ -1,5 +1,9 @@
 .SideBar {
-  background: linear-gradient(to bottom, #1a3636, #222222); /* Gradient background */
+  background: linear-gradient(
+    to bottom,
+    #1a3636,
+    #222222
+  ); /* Gradient background */
   width: 70px; /* Default width when collapsed */
   height: 100%; /* Full height */
   color: white;
@@ -8,86 +12,87 @@
   grid-auto-rows: max-content; /* Adjust rows based on content size */
   justify-content: center; /* Align items to the center */
   align-items: center;
-  transition: width 0.3s ease, background-color 0.3s ease;
+  transition: width 0.6s ease, background-color 0.6s ease;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3); /* Shadow for depth */
   z-index: 10;
 
-
   .toggle_button {
     margin-top: 10px;
-    align-items:center;
+    margin-bottom: 10px;
+    align-items: center;
     justify-self: center;
     cursor: pointer;
-    background:none;
-    border: none; 
+    background: none;
+    border: none;
 
     .container {
-      display: grid;           /* Grid for vertical bars */
-      grid-template-rows: repeat(3, 5px); /* Three rows, each 5px tall (the height of each bar) */
-      grid-gap: 4px;           /* Space between the bars */
-      height: 22px;            /* Total height */
-      width: 35px;             /* Hamburger width */
-      position: relative;  
-      
-      .bar1, .bar2, .bar3 {
-        
+      display: grid; /* Grid for vertical bars */
+      grid-template-rows: repeat(
+        3,
+        5px
+      ); /* Three rows, each 5px tall (the height of each bar) */
+      grid-gap: 4px; /* Space between the bars */
+      height: 22px; /* Total height */
+      width: 35px; /* Hamburger width */
+      position: relative;
+
+      .bar1,
+      .bar2,
+      .bar3 {
         width: 100%;
-        height: 4px;             /* Height of each individual bar */
-        background-color:#f8cb04ef; /* Visible white color */
-        border-radius: 5px;      /* Rounded edges for cleaner look */
-        transition: transform 0.4s ease, opacity 0.4s ease; /* Smooth transitions */ 
-
-      }        
-
-    }      
+        height: 4px; /* Height of each individual bar */
+        background-color: #f8cb04ef; /* Visible white color */
+        border-radius: 5px; /* Rounded edges for cleaner look */
+        transition: transform 0.4s ease, opacity 0.4s ease; /* Smooth transitions */
+      }
+    }
     .change .bar1 {
       transform: translateY(7px) rotate(45deg); /* Rotate bar1 */
     }
 
-    .change  .bar2 {
+    .change .bar2 {
       opacity: 0; /* Hide bar2 when the hamburger is toggled */
     }
 
-    .change  .bar3 {
+    .change .bar3 {
       transform: translateY(-7px) rotate(-45deg); /* Rotate bar3 */
     }
   }
-  &[data-sidebaropen="false"]{
-    .menu_item{        
+  &[data-sidebaropen='false'] {
+    .nav_links {
       display: grid;
-      grid-template-columns: auto;
-      justify-items:left;
-      margin-bottom: 10px;
-      visibility: hidden;
-    
-
-      i{
-        color: aliceblue;
-        visibility:visible;
-
-   
-        
-      }
-    }
-
-  }
-
-  &[data-sidebaropen="true"]{
-    width: 200px;
-    
-
-    .menu_item{
       align-items: center;
       justify-items: center;
-      margin-bottom: 20px;       
-      & i{
-        align-items: center;
-        margin-right: 5px;
+      row-gap: 30px;
+      padding: 0;
+      margin: 0 auto;
+      margin-bottom: 10px;
+      width: 100%;
+
+      .menu_item {
+        display: none;
       }
-
     }
-
   }
 
+  &[data-sidebaropen='true'] {
+    width: 200px;
 
+    .nav_links {
+      display: grid; /* here wihout the grid display the button info will out of order*/
+      justify-items: center; /* Ensure horizontal centering */
+      align-items: center; /* Ensure vertical centering */
+      row-gap: 15px; /* Add space between links */
+      padding: 0; /* Remove any unwanted padding */
+      margin: 0 auto; /* Center within sidebar area */
+      & i {
+        margin-right: 5px;
+      }
+    
+    }
+
+    .menu_icon {
+      display: none;
+    }
+  }
 }

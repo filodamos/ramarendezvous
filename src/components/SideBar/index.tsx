@@ -8,13 +8,18 @@ function handleButtonClick(msg: string) {
 // MenuItem component
 function MenuItem({ label, iconClass }: { label: string; iconClass: string }) {
   return (
-    <button
-      className={styles.menu_item}
-      onClick={() => handleButtonClick(`${label} Button`)}
-    >
-      <i className={iconClass} />
-      {label}
-    </button>
+    <div className={styles.menu_item_container}>
+      <div className={styles.menu_icon}>
+        <i className={iconClass} />
+      </div>
+      <button
+        className={styles.menu_item}
+        onClick={() => handleButtonClick(`${label} Button`)}
+      >
+        <i className={iconClass} />
+        {label}
+      </button>
+    </div>
   )
 }
 // SideBar component with hamburger button
@@ -36,35 +41,13 @@ export function SideBar() {
           <div className={styles.bar3}></div>
         </div>
       </button>
-        <div className={styles.content}>
-          <ul className={styles.nav_links}>
-            <MenuItem label="Home" iconClass="fa-solid fa-house-chimney" />
-            <MenuItem label="Info" iconClass="fa-regular fa-clipboard" />
-            <MenuItem label="Settings" iconClass="fa-solid fa-gears" />
-          </ul>
-        </div>
-     
+      <ul className={styles.nav_links}>
+        <MenuItem label="Home" iconClass="fa-solid fa-house-chimney" />
+        <MenuItem label="Info" iconClass="fa-regular fa-clipboard" />
+        <MenuItem label="Settings" iconClass="fa-solid fa-gears" />
+      </ul>
     </div>
   )
 }
 
-{
-  // <div className="menu-item">
-  //   <i className="fa-regular fa-clipboard"></i>
-  //   <button
-  //     className="menu-button"
-  //     onClick={() => handleButtonClick("Info Button")}
-  //   >
-  //     Info
-  //   </button>
-  // </div>
-  // <div className="menu-item">
-  //   <i className="fa-solid fa-gears"></i>
-  //   <button
-  //     className="menu-button"
-  //     onClick={() => handleButtonClick("Settings Button")}
-  //   >
-  //     Settings
-  //   </button>
-  //   </div>
-}
+

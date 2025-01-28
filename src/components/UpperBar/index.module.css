@@ -34,11 +34,7 @@
     transition: width 0.3s ease-out;  /* Animate the underline expansion */
   }
 
-  & a:hover {
-    color: #f8cb04;  /* Change text color on hover */
-    transform: scale(1.1);  /* Slightly enlarge on hover */
-    text-decoration: none;  /* Remove the default underline */
-  }
+
 
   & a:hover::after {
     width: 100%;  /* Expand underline to the full width of the text */

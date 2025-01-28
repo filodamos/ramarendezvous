@@ -1,0 +1,40 @@
+.ContentBoxes {
+  width: 100%; /* Default width when collapsed */
+  height: 100%; /* Full height */
+  color: white;
+  display: grid;
+  grid-auto-flow: row column; /* Items arranged in rows */
+  grid-auto-rows: max-content;
+  grid-auto-columns: max-content; /* Adjust rows based on content size */
+ 
+  
+  .box{
+    display: block;
+    align-items: end;
+    background-color: rgba(13, 99, 17, 0.281);
+    border-radius: 20%;
+    border-style:ridge;
+    height: 200px;
+    width: 200px;
+ 
+    margin-left: 20px;
+    margin-top: 20px;
+    
+    p{
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        justify-self:center;
+        align-items: center;
+
+    }
+    &:hover{
+        background-color: rgba(240, 248, 255, 0.979);
+        border-color:rgb(30 43 43);
+        border-style:dashed;
+        p{
+            color: rgb(30 43 43);
+        }
+    }
+  }
+
+
+}
