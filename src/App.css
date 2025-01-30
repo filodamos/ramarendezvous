@@ -90,7 +90,7 @@
 
 .main-container {
   display: grid;
-  grid-template-rows: 60px 1fr;
+  /* grid-template-rows: 60px 1fr; */
 }
 
 .sidebar.open ~ .upperbar {

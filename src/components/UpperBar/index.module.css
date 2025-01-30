@@ -23,7 +23,7 @@
   }
 
   /* Add a smooth highlight underline animation effect */
-  & a::after {
+  a::after {
     content: '';
     position: absolute;
     left: 0;
@@ -36,7 +36,7 @@
 
 
 
-  & a:hover::after {
+  a:hover::after {
     width: 100%;  /* Expand underline to the full width of the text */
   }
 }
@@ -52,7 +52,6 @@
   padding: 0 10px;
   font-size: 1rem;
   color: white;
-
   overflow: visible;
 
 }

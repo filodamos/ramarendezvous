@@ -2,39 +2,97 @@
   width: 100%; /* Default width when collapsed */
   height: 100%; /* Full height */
   color: white;
-  display: grid;
-  grid-auto-flow: row column; /* Items arranged in rows */
-  grid-auto-rows: max-content;
-  grid-auto-columns: max-content; /* Adjust rows based on content size */
- 
-  
-  .box{
-    display: block;
-    align-items: end;
+  display: grid; 
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+ /* Automatically fit boxes with a minimum width of 200px */
+  /* Space between the boxes */
+
+  .box {
+    
+    grid-column: 1;
+    align-items: start;
     background-color: rgba(13, 99, 17, 0.281);
     border-radius: 20%;
-    border-style:ridge;
+    border-style: solid;
     height: 200px;
     width: 200px;
- 
     margin-left: 20px;
     margin-top: 20px;
-    
-    p{
-        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-        justify-self:center;
-        align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
 
+    & p {
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+        'Lucida Sans', Arial, sans-serif;
+      font-style: italic;
+      font-size: bold;
+      font-size: 20px;
+      transition: transform 0.3s ease-in-out;
+      justify-self: center;
+      align-items: center;
+      text-align: center;
     }
-    &:hover{
-        background-color: rgba(240, 248, 255, 0.979);
-        border-color:rgb(30 43 43);
-        border-style:dashed;
-        p{
-            color: rgb(30 43 43);
-        }
+
+    &:hover {
+      background-color: rgba(240, 248, 255, 0.979);
+      border-color: rgb(30, 43, 43);
+      border-style: solid;
+      transform: translateY(
+        -10px
+      ); /* Moves the box up slightly to give floating effect */
+      box-shadow: 10px 20px 20px rgba(0, 0, 0, 0.3); /* Shadow effect for floating illusion */
+
+      p {
+        transform: translateY(-5px);
+        color: rgb(30, 43, 43);
+      }
     }
   }
+  .news{
+    grid-column: 10;
+    grid-row: 2;
+    width: 100px;
+    height: 100px;
+    background-color:antiquewhite;
+    box-shadow: #1a3636;
+  }
+
+  .timeline {
+    grid-column: 2;
+    grid-row: 1; 
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    & .line{
+        grid-column:1;
+        width:2px;
+        height:40px;
+        color:#1a3636;
+        background-color: #1a3636;
+
+    }
 
 
+   
+    & .timelinePoint {
+      grid-column:1;
+      justify-self: center;
+      width: 20px; /* Small width */
+      height: 20px; /* Small height */
+      background-color: #bbd3bc; /* Color of the point */
+      border-radius: 50%;
+      border-color: #1a3636;
+      border-style: solid;
+      top: 0%; 
+      transform: translateY(-50%);
+      
+      &:hover{
+        width: 30px;
+        height: 30px;
+        padding: 0;
+      }
+
+    }
+
+  }
 }
