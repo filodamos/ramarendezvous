@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
-import styles from './index.module.css'
+import { useState } from "react";
+import styles from "./index.module.css";
 
 function handleButtonClick(msg: string) {
-  console.log(msg)
+  console.log(msg);
 }
 
 // MenuItem component
@@ -20,21 +20,21 @@ function MenuItem({ label, iconClass }: { label: string; iconClass: string }) {
         {label}
       </button>
     </div>
-  )
+  );
 }
 // SideBar component with hamburger button
 export function SideBar() {
-  const [sidebarOpen, setSidebarOpen] = useState<boolean>(false)
+  const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
 
   const toggleSidebar = () => {
-    setSidebarOpen(!sidebarOpen) // Toggle state for opening the sidebar
-  }
+    setSidebarOpen((p) => !p); // Toggle state for opening the sidebar
+  };
 
   return (
     <div className={styles.SideBar} data-sidebaropen={sidebarOpen}>
       <button onClick={toggleSidebar} className={styles.toggle_button}>
         <div
-          className={`${styles.container} ${sidebarOpen ? styles.change : ''}`}
+          className={`${styles.container} ${sidebarOpen ? styles.change : ""}`}
         >
           <div className={styles.bar1}></div>
           <div className={styles.bar2}></div>
@@ -47,7 +47,5 @@ export function SideBar() {
         <MenuItem label="Settings" iconClass="fa-solid fa-gears" />
       </ul>
     </div>
-  )
+  );
 }
-
-

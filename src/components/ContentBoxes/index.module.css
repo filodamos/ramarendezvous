@@ -2,14 +2,13 @@
   width: 100%; /* Default width when collapsed */
   height: 100%; /* Full height */
   color: white;
-  display: grid; 
+  display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(12, 1fr);
- /* Automatically fit boxes with a minimum width of 200px */
+  /* Automatically fit boxes with a minimum width of 200px */
   /* Space between the boxes */
 
   .box {
-    
     grid-column: 1;
     align-items: start;
     background-color: rgba(13, 99, 17, 0.281);
@@ -19,11 +18,13 @@
     width: 200px;
     margin-left: 20px;
     margin-top: 20px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease; /* Smooth transition */
 
     & p {
-      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
-        'Lucida Sans', Arial, sans-serif;
+      font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+        "Lucida Sans", Arial, sans-serif;
       font-style: italic;
       font-size: bold;
       font-size: 20px;
@@ -48,34 +49,31 @@
       }
     }
   }
-  .news{
+  .news {
     grid-column: 10;
     grid-row: 2;
     width: 100px;
     height: 100px;
-    background-color:antiquewhite;
+    background-color: antiquewhite;
     box-shadow: #1a3636;
   }
 
   .timeline {
     grid-column: 2;
-    grid-row: 1; 
+    grid-row: 1;
     display: grid;
     justify-items: center;
     align-items: center;
-    & .line{
-        grid-column:1;
-        width:2px;
-        height:40px;
-        color:#1a3636;
-        background-color: #1a3636;
-
+    & .line {
+      grid-column: 1;
+      width: 2px;
+      height: 40px;
+      color: #1a3636;
+      background-color: #1a3636;
     }
 
-
-   
     & .timelinePoint {
-      grid-column:1;
+      grid-column: 1;
       justify-self: center;
       width: 20px; /* Small width */
       height: 20px; /* Small height */
@@ -83,16 +81,14 @@
       border-radius: 50%;
       border-color: #1a3636;
       border-style: solid;
-      top: 0%; 
+      top: 0%;
       transform: translateY(-50%);
-      
-      &:hover{
+
+      &:hover {
         width: 30px;
         height: 30px;
         padding: 0;
       }
-
     }
-
   }
 }
