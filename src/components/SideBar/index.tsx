@@ -1,27 +1,43 @@
 import { useState } from "react";
 import styles from "./index.module.css";
-
+import { Link, useNavigate } from '@tanstack/react-router'
 function handleButtonClick(msg: string) {
   console.log(msg);
 }
 
 // MenuItem component
-function MenuItem({ label, iconClass }: { label: string; iconClass: string }) {
-  return (
-    <div className={styles.menu_item_container}>
+function MenuItem({
+  label,
+  iconClass,
+  url,
+}: {
+  label: string;
+  iconClass: string;
+  url: string;
+}) {
+  const navigate = useNavigate();
+
+
+  return (    
+  <div className={styles.menu_item_container}>
       <div className={styles.menu_icon}>
         <i className={iconClass} />
       </div>
-      <button
-        className={styles.menu_item}
-        onClick={() => handleButtonClick(`${label} Button`)}
-      >
-        <i className={iconClass} />
-        {label}
-      </button>
+    <button
+      className={styles.menu_item}
+      onClick={() => navigate({ to: url })}
+    >
+      <i className={iconClass} />
+      {label}
+    </button> 
     </div>
   );
 }
+
+
+
+
+
 // SideBar component with hamburger button
 export function SideBar() {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
@@ -45,6 +61,7 @@ export function SideBar() {
         <MenuItem label="Home" iconClass="fa-solid fa-house-chimney" />
         <MenuItem label="Info" iconClass="fa-regular fa-clipboard" />
         <MenuItem label="Settings" iconClass="fa-solid fa-gears" />
+        <MenuItem label="Repositories" iconClass="fa-solid fa-book" url="/repositories"/>
       </ul>
     </div>
   );

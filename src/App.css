@@ -88,15 +88,12 @@
 /*   width: calc(100% - 60px); /\* Adjust width *\/ */
 /* } */
 
-.main-container {
+/* .main-container {
   display: grid;
-  /* grid-template-rows: 60px 1fr; */
-}
+  /* grid-template-rows: 60px 1fr; }*/
 
-.sidebar.open ~ .upperbar {
-  margin-left: 200px; /* Adjust when the sidebar is expanded */
-  width: calc(100% - 200px); /* Adjust upperbar width accordingly */
-}
+
+
 
 /* .upperbar-items { */
 /*   display: flex; /\* Horizontal layout *\/ */

@@ -5,7 +5,7 @@
     #222222
   ); /* Gradient background */
   width: 70px; /* Default width when collapsed */
-  height: 100%; /* Full height */
+  height: 100vh; /* Full height */
   color: white;
   display: grid;
   grid-auto-flow: row; /* Items arranged in rows */
