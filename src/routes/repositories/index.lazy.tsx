@@ -9,17 +9,19 @@ function Repoitems({
   label,
   iconClass,
   url,
+  id,
 }: {
   label: string
   iconClass: string
   url: string
+  id: string
 }) {
   const navigate = useNavigate()
 
   return (
     <button
       className={styles.ViewButton}
-      onClick={() => navigate({ to: url })}
+      onClick={() => navigate({ to: `/${url}/${id}` })}
     >
       <i className={iconClass} />
       {label}
@@ -35,7 +37,8 @@ function RouteComponent() {
           <Repoitems
             label="View"
             iconClass="fa-regular fa-eye"
-            url="/repository"
+            url="repository"
+            id="2"
           /></p>
         </li>
         <li>
@@ -43,7 +46,8 @@ function RouteComponent() {
           <Repoitems
             label="View"
             iconClass="fa-regular fa-eye"
-            url="/repository"
+            url="repository"
+            id="3"
           /></p>
         </li>
       </ul>

@@ -13,11 +13,11 @@ import { createFileRoute } from '@tanstack/react-router'
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as RepositoryIdImport } from './routes/repository/$id'
 
 // Create Virtual Routes
 
 const IndexLazyImport = createFileRoute('/')()
-const RepositoryIndexLazyImport = createFileRoute('/repository/')()
 const RepositoriesIndexLazyImport = createFileRoute('/repositories/')()
 const DashboardIndexLazyImport = createFileRoute('/dashboard/')()
 
@@ -28,14 +28,6 @@ const IndexLazyRoute = IndexLazyImport.update({
   path: '/',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
-
-const RepositoryIndexLazyRoute = RepositoryIndexLazyImport.update({
-  id: '/repository/',
-  path: '/repository/',
-  getParentRoute: () => rootRoute,
-} as any).lazy(() =>
-  import('./routes/repository/index.lazy').then((d) => d.Route),
-)
 
 const RepositoriesIndexLazyRoute = RepositoriesIndexLazyImport.update({
   id: '/repositories/',
@@ -53,6 +45,12 @@ const DashboardIndexLazyRoute = DashboardIndexLazyImport.update({
   import('./routes/dashboard/index.lazy').then((d) => d.Route),
 )
 
+const RepositoryIdRoute = RepositoryIdImport.update({
+  id: '/repository/$id',
+  path: '/repository/$id',
+  getParentRoute: () => rootRoute,
+} as any)
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
@@ -62,6 +60,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/repository/$id': {
+      id: '/repository/$id'
+      path: '/repository/$id'
+      fullPath: '/repository/$id'
+      preLoaderRoute: typeof RepositoryIdImport
       parentRoute: typeof rootRoute
     }
     '/dashboard/': {
@@ -78,13 +83,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RepositoriesIndexLazyImport
       parentRoute: typeof rootRoute
     }
-    '/repository/': {
-      id: '/repository/'
-      path: '/repository'
-      fullPath: '/repository'
-      preLoaderRoute: typeof RepositoryIndexLazyImport
-      parentRoute: typeof rootRoute
-    }
   }
 }
 
@@ -92,47 +90,47 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
+  '/repository/$id': typeof RepositoryIdRoute
   '/dashboard': typeof DashboardIndexLazyRoute
   '/repositories': typeof RepositoriesIndexLazyRoute
-  '/repository': typeof RepositoryIndexLazyRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
+  '/repository/$id': typeof RepositoryIdRoute
   '/dashboard': typeof DashboardIndexLazyRoute
   '/repositories': typeof RepositoriesIndexLazyRoute
-  '/repository': typeof RepositoryIndexLazyRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexLazyRoute
+  '/repository/$id': typeof RepositoryIdRoute
   '/dashboard/': typeof DashboardIndexLazyRoute
   '/repositories/': typeof RepositoriesIndexLazyRoute
-  '/repository/': typeof RepositoryIndexLazyRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/dashboard' | '/repositories' | '/repository'
+  fullPaths: '/' | '/repository/$id' | '/dashboard' | '/repositories'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/dashboard' | '/repositories' | '/repository'
-  id: '__root__' | '/' | '/dashboard/' | '/repositories/' | '/repository/'
+  to: '/' | '/repository/$id' | '/dashboard' | '/repositories'
+  id: '__root__' | '/' | '/repository/$id' | '/dashboard/' | '/repositories/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
+  RepositoryIdRoute: typeof RepositoryIdRoute
   DashboardIndexLazyRoute: typeof DashboardIndexLazyRoute
   RepositoriesIndexLazyRoute: typeof RepositoriesIndexLazyRoute
-  RepositoryIndexLazyRoute: typeof RepositoryIndexLazyRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
+  RepositoryIdRoute: RepositoryIdRoute,
   DashboardIndexLazyRoute: DashboardIndexLazyRoute,
   RepositoriesIndexLazyRoute: RepositoriesIndexLazyRoute,
-  RepositoryIndexLazyRoute: RepositoryIndexLazyRoute,
 }
 
 export const routeTree = rootRoute
@@ -146,22 +144,22 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
+        "/repository/$id",
         "/dashboard/",
-        "/repositories/",
-        "/repository/"
+        "/repositories/"
       ]
     },
     "/": {
       "filePath": "index.lazy.tsx"
+    },
+    "/repository/$id": {
+      "filePath": "repository/$id.tsx"
     },
     "/dashboard/": {
       "filePath": "dashboard/index.lazy.tsx"
     },
     "/repositories/": {
       "filePath": "repositories/index.lazy.tsx"
-    },
-    "/repository/": {
-      "filePath": "repository/index.lazy.tsx"
     }
   }
 }
