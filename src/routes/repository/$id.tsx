@@ -1,51 +1,77 @@
-import { createFileRoute, useParams } from '@tanstack/react-router'
-import styles from './index.module.css'
-import { useEffect, useState } from 'react';
+import { createFileRoute, useParams } from "@tanstack/react-router";
+import styles from "./index.module.css";
+import { useCallback, useEffect, useState } from "react";
+import { createRepo, fetchData, prFetchData } from "../../api";
+import { useMutation, useQuery } from "@tanstack/react-query";
 
-export const Route = createFileRoute('/repository/$id')({
+export const Route = createFileRoute("/repository/$id")({
   component: RouteComponent,
-})
+});
 
 interface DataResponse {
-  message: string
+  message: string;
 }
 
 function RouteComponent() {
-  const { id } = useParams({ strict: false })
- 
-  const [data, setData] = useState(null)
+  const { id } = useParams({ strict: false });
+  const [data, setData] = useState(null);
+
+  // const ftData = useCallback(async () => {
+  //   setLoading(true);
+  //   const dt = await fetchData();
+  //   setData(dt);
+  //   setLoading(false);
+  // }, []);
+
+  // useEffect(() => {
+  //   ftData();
+  // }, []);
+
+  const {
+    data: dt,
+    isFetching,
+    isLoading,
+  } = useQuery({
+    queryKey: ["repository", "details", 5],
+    queryFn: () => prFetchData(),
+    retry: false,
+    staleTime: 10000,
+  });
+
+  const repoMutation = useMutation({
+    mutationFn: () => createRepo(),
+  });
 
   useEffect(() => {
-    const fetchData = async () => {
-     console.time('fetchTime')
-        const response = await fetch(
-          'http://127.0.0.1:8000/repos/EleftheriaEkatommati'
-        )
-        console.timeLog('fetchTime', 'Received response')
+    // do something
+  }, [repoMutation.isSuccess]);
 
-        // Check if the response is OK (status 200)
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`)
-        }
+  useEffect(() => {
+    // do something
+  }, [repoMutation.isError]);
 
-        const json = await response.json()
-        setData(json)
-        console.timeEnd('fetchTime')
-
-    }
-
-    fetchData()
-  }, [])
+  console.log({ dt, isFetching, isLoading });
 
   return (
     <div className={styles.Details}>
       <h1>Page {id}</h1>
       <p>
-        {' '}
+        {" "}
         Some information about the repository , the creator , the project and
         the whole thing
       </p>
-      <pre>{JSON.stringify(data, null, 2)}</pre>
+      {isLoading || isFetching ? (
+        <pre>loading</pre>
+      ) : (
+        <pre>{JSON.stringify(data, null, 2)}</pre>
+      )}
+      <button
+        onClick={function () {
+          repoMutation.mutate();
+        }}
+      >
+        click me
+      </button>
     </div>
-  )
+  );
 }
