@@ -17,7 +17,7 @@ export async function fetchData() {
 }
 
 export async function prFetchData() {
-  return axios.get("http://127.0.0.1:8000/repos/EleftheriaEkatommati");
+  return axios.get('http://127.0.0.1:8000/repos/EleftheriaEkatommati')
 }
 
 export async function createRepo() {
