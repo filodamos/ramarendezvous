@@ -1,11 +1,15 @@
 /* General App Styles */
 .app {
   display: grid; /* Establish a flexbox container */
+  grid-template-columns: 70px 1fr;
   height: 100vh; /* Full viewport height */
   width: 100vw; /* Full viewport width (to avoid overflow issues) */
-  grid-template-columns: 60px 1fr; /* Sidebar and main content */
+  /* Sidebar and main content */
 }
-
+.content{
+  height: 100vh; /* Full viewport height */
+  width: 100vw; 
+}
 /* Sidebar styles */
 
 /* Sidebar Expanded */
