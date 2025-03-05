@@ -1,0 +1,29 @@
+.list_info {
+    table{
+      width: 80%;
+      margin: 20px auto;
+      border-collapse: collapse;
+      font-family: Arial, sans-serif;
+      box-shadow: 10px 10px 10px rgba(114, 17, 226, 0.2);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 12px;
+      text-align: center;
+      border: 1px solid #8e6bbd; /* Soft green border */
+      
+    }
+    th {
+      background-color: #66fd0211; /* Soft Green */
+      color: #8884d8; /* Soft Gold */
+      font-weight: bold;
+      box-shadow: inset;
+    }
+    td {
+      background-color: #0d771671; /* Light green */
+      color: #fffc45; /* Dark gray text for contrast */
+      text-shadow: #8884d8;
+      font-weight: bold;
+    }
+}

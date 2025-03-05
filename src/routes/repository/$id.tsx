@@ -16,7 +16,15 @@ import {
   Legend,
   ResponsiveContainer,
 } from 'recharts'
-
+import HorizontalBarChart  from '../../../src/components/RepositoryComponents/ScoreCommit'
+import MyPieChart from '../../components/RepositoryComponents/PieCharts/FrequencyChart'
+import LanguagePieChart from '../../components/RepositoryComponents/PieCharts/LauguangeChart'
+import HealthScoreBarChart from '../../components/RepositoryComponents/HealthMetrics/HealthBar'
+import ComponentA from '../../components/RepositoryComponents/HealthMetrics/Metrics'
+// import WeekBarChart from '../../components/RepositoryComponents/CalendarCommits/WeekCommits'
+// import MonthBarChart from '../../components/RepositoryComponents/CalendarCommits/MonthCommits'
+// import DayBarChart from '../../components/RepositoryComponents/CalendarCommits/DaysCommits'
+import Calendar from '../../components/RepositoryComponents/CalendarCommits'
 export const Route = createFileRoute('/repository/$id')({
   component: RouteComponent,
 })
@@ -25,141 +33,36 @@ interface DataResponse {
   message: string
 }
 
-const data = [
-  { date: '2025-02-02', value: 10 },
-  { date: '2025-02-03', value: 15 },
-  { date: '2025-02-04', value: 8 },
-  { date: '2025-02-05', value: 20 },
-]
+// const data = [
+//   { date: '2025-02-02', value: 10 },
+//   { date: '2025-02-03', value: 15 },
+//   { date: '2025-02-04', value: 8 },
+//   { date: '2025-02-05', value: 20 },
+// ]
 
-const CustomBarChart: React.FC = () => {
-  return (
-    <ResponsiveContainer width="100%" height={300}>
-      <BarChart data={data}>
-        <XAxis
-          dataKey="date"
-          tickFormatter={(date) => new Date(date).toLocaleDateString()}
-        />
-        <YAxis />
-        <Tooltip />
-        <Bar dataKey="value" fill="#8884d8" />
-      </BarChart>
-    </ResponsiveContainer>
-  )
-}
+// const CustomBarChart: React.FC = () => {
+//   return (
+//     <ResponsiveContainer width="100%" height={300}>
+//       <BarChart data={data}>
+//         <XAxis
+//           dataKey="date"
+//           tickFormatter={(date) => new Date(date).toLocaleDateString()}
+//         />
+//         <YAxis />
+//         <Tooltip />
+//         <Bar dataKey="value" fill="#8884d8" />
+//       </BarChart>
+//     </ResponsiveContainer>
+//   )
+// }
 
-const commits_data = [
-  { commmiter: 'Category A', value: 400 },
-  { commmiter: 'Category B', value: 300 },
-  { commmiter: 'Category C', value: 500 },
-  { commmiter: 'Category D', value: 200 },
-]
 
-const HorizontalBarChart = () => {
-  const sortedData = [...commits_data].sort((a, b) => b.value - a.value)
-  return (
-    <ResponsiveContainer width="100%" height={300}>
-      <BarChart
-        data={sortedData}
-        layout="vertical" // Makes bars horizontal
-        margin={{ top: 20, right: 30, left: 40, bottom: 5 }}
-      >
-        <XAxis type="number" />
-        <YAxis dataKey="commmiter" type="category" />
-        <Tooltip />
-        <Bar dataKey="value" fill="#8884d8" />
-      </BarChart>
-    </ResponsiveContainer>
-  )
-}
 
-const codefreq_data = [
-  { name: 'Additions', value: 400 },
-  { name: 'Deletions', value: 300 },
-]
 
-// You can customize the colors for each section of the pie
-const COLORS = ['#28a745', '#d73a49']
-const MyPieChart = () => {
-  return (
-    <ResponsiveContainer width="100%" height={400}>
-      <PieChart>
-        <Pie
-          data={codefreq_data}
-          cx="50%" // Center X-axis
-          cy="50%" // Center Y-axis
-          innerRadius={60} // Inner radius (makes it a donut chart, optional)
-          outerRadius={80} // Outer radius
-          dataKey="value"
-          labelLine={false} // Disable the lines that connect labels to slices
-        >
-          {codefreq_data.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={COLORS[index]} />
-          ))}
-          <Label
-            value="Additions & Deletions"
-            position="center"
-            style={{ fontSize: 18, fontWeight: 'bold', fill: '#333' }}
-          />
-        </Pie>
-        <Tooltip />
-        <Legend
-          verticalAlign="top" // Place the legend above the pie chart
-          align="center"
-          layout="horizontal"
-        />
-      </PieChart>
-    </ResponsiveContainer>
-  )
-}
 
-const score = [
-  { name: 'Health Score', value: 75 }, // Health score of 75
-]
 
-const HealthScoreBarChart = () => {
-  return (
-    <ResponsiveContainer width="100%" height={300}>
-      <BarChart data={score}>
-        <XAxis type="category" dataKey="name" />
-        <YAxis />
-        <Tooltip />
-        <Bar dataKey="value" fill="#8884d8" />
-      </BarChart>
-    </ResponsiveContainer>
-  )
-}
 
-export default HealthScoreBarChart
-const ComponentA = () => (
-  <div className={styles.list_info}>
-    <h2>Metrics</h2>
-    <table>
-      
-      <tr>
-        <th>Total Commits</th>
-        <td>30</td>
-      </tr>
-      <tr>
-        <th>Total Forks</th>
-        <td>5</td>
-      </tr>
-      <tr>
-        <th>Total Merges</th>
-        <td>10</td>
-      </tr>
-      <tr>
-        <th>Total Clones</th>
-        <td>50</td>
-      </tr>
-      <tr>
-        <th>Total Views</th>
-        <td>100</td>
-      </tr>
-    </table>
 
-  </div>
-)
 
 function RouteComponent() {
   const { id } = useParams({ strict: false })
@@ -205,7 +108,13 @@ function RouteComponent() {
     <div className={styles.repopage}>
       <div className={styles.chart_one}>
         <h2>Commits per day of this month</h2>
-        <CustomBarChart />
+        <div className={styles.days_week_month}>
+           {/* <WeekBarChart /> */}
+           {/* <MonthBarChart/> */}
+           {/* <DayBarChart/> */}
+           <Calendar/>
+           <button className={styles.Week}></button>
+        </div>
       </div>
       <div className={styles.chart_two}>
         <h2>Top commiters of this repository</h2>
@@ -217,8 +126,9 @@ function RouteComponent() {
       </div>
       <></>
       <div className={styles.pie_chart}>
-        <h2>Code Frequency</h2>
+        {/* <h2>Code Frequency</h2> */}
         <MyPieChart />
+        <LanguagePieChart/>
       </div>
     </div>
   )
