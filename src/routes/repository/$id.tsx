@@ -3,28 +3,16 @@ import styles from './index.module.css'
 import { useCallback, useEffect, useState } from 'react'
 import { createRepo, fetchData, prFetchData } from '../../api'
 import { useMutation, useQuery } from '@tanstack/react-query'
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  Tooltip,
-  PieChart,
-  Pie,
-  Cell,
-  Label,
-  Legend,
-  ResponsiveContainer,
-} from 'recharts'
-import HorizontalBarChart  from '../../../src/components/RepositoryComponents/ScoreCommit'
+
+import HorizontalBarChart from '../../../src/components/RepositoryComponents/ScoreCommit'
 import MyPieChart from '../../components/RepositoryComponents/PieCharts/FrequencyChart'
 import LanguagePieChart from '../../components/RepositoryComponents/PieCharts/LauguangeChart'
 import HealthScoreBarChart from '../../components/RepositoryComponents/HealthMetrics/HealthBar'
 import ComponentA from '../../components/RepositoryComponents/HealthMetrics/Metrics'
-// import WeekBarChart from '../../components/RepositoryComponents/CalendarCommits/WeekCommits'
-// import MonthBarChart from '../../components/RepositoryComponents/CalendarCommits/MonthCommits'
-// import DayBarChart from '../../components/RepositoryComponents/CalendarCommits/DaysCommits'
 import Calendar from '../../components/RepositoryComponents/CalendarCommits'
+
+
+import LineChartCommits from '../../components/RepositoryComponents/LineChartCommits'
 export const Route = createFileRoute('/repository/$id')({
   component: RouteComponent,
 })
@@ -32,36 +20,6 @@ export const Route = createFileRoute('/repository/$id')({
 interface DataResponse {
   message: string
 }
-
-// const data = [
-//   { date: '2025-02-02', value: 10 },
-//   { date: '2025-02-03', value: 15 },
-//   { date: '2025-02-04', value: 8 },
-//   { date: '2025-02-05', value: 20 },
-// ]
-
-// const CustomBarChart: React.FC = () => {
-//   return (
-//     <ResponsiveContainer width="100%" height={300}>
-//       <BarChart data={data}>
-//         <XAxis
-//           dataKey="date"
-//           tickFormatter={(date) => new Date(date).toLocaleDateString()}
-//         />
-//         <YAxis />
-//         <Tooltip />
-//         <Bar dataKey="value" fill="#8884d8" />
-//       </BarChart>
-//     </ResponsiveContainer>
-//   )
-// }
-
-
-
-
-
-
-
 
 
 function RouteComponent() {
@@ -107,28 +65,25 @@ function RouteComponent() {
   return (
     <div className={styles.repopage}>
       <div className={styles.chart_one}>
-        <h2>Commits per day of this month</h2>
+        <h2>Commits per Day/ Week/ Month</h2>
         <div className={styles.days_week_month}>
-           {/* <WeekBarChart /> */}
-           {/* <MonthBarChart/> */}
-           {/* <DayBarChart/> */}
-           <Calendar/>
-           <button className={styles.Week}></button>
+          <Calendar />
         </div>
       </div>
       <div className={styles.chart_two}>
-        <h2>Top commiters of this repository</h2>
-        <HorizontalBarChart />
+
+        <div className={styles.stats}>
+          <HorizontalBarChart />
+          <ComponentA />
+        </div>
       </div>
-      <div className={styles.some_stats}>
-        <HealthScoreBarChart />
-        <ComponentA />
+      <div className={styles.chart_three}>
+        <h2>Commits over the Month</h2>
+        <LineChartCommits />
       </div>
-      <></>
-      <div className={styles.pie_chart}>
-        {/* <h2>Code Frequency</h2> */}
-        <MyPieChart />
-        <LanguagePieChart/>
+      <div className={styles.chart_four}>
+         <HealthScoreBarChart />
+         <LanguagePieChart />
       </div>
     </div>
   )

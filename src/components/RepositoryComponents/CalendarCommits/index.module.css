@@ -1,27 +1,69 @@
 /* Calendar.module.css */
 
-.button {
-  padding: 10px 20px;
-  margin: 5px;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-}
+.calendar {
+  display: grid;
+  grid-template-rows: 100px 400px 40px;
+  align-items: center;
+  width: 1fr;               /* Set the width of the box */
+  height: 550px;              /* Set the height of the box */
+  background-color: #f1f1f171;  /* Set the background color of the box */
+  border: 2px solid #d9dbd2;     /* Add a border around the box */
+  padding: 20px;              /* Add padding inside the box */
+  margin: 10px;               /* Add margin outside the box */
+  border-radius: 10px;
+  /* box-shadow: 10px 10px 10px rgba(88, 85, 85, 0.514);  */
+  box-shadow: 12px 12px 3px 3px rgba(15, 15, 241, 0.158);
 
-.button:hover {
-  opacity: 0.8;
-}
+  & .view {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: center;
 
-.active {
-  background-color: #007bff;
-  color: white;
-  cursor: default;
-  opacity: 0.7;
-}
+    & .button {
+      padding: 10px 20px;
+      margin: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      box-shadow: 5px 5px 3px 3px rgba(15, 15, 241, 0.158);
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+      &.hover {
+        opacity: 0.8;
+      }
 
-.inactive {
-  background-color: #f0f0f0;
-  color: black;
+      &.active {
+        background-color: rgba(32, 17, 73, 0.267);
+        color: #0a0a0a86;
+        border: 1px solid #2a055afd;;
+        cursor: default;
+       
+      }
+
+      &.inactive {
+        background-color: #f0f0f0;
+        color: black;
+      }
+    }
+  }
+  & .graph {
+    display: grid;
+    height: 400px;
+    width: 100%;
+    align-items: end;
+    
+  }
+  & .paging{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    & .prenext{
+      margin: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      border-radius: 5px;
+      &.hover {
+        opacity: 0.8;
+      }
+    }
+  }
 }

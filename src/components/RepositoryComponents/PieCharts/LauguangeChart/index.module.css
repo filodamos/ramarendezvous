@@ -1,0 +1,24 @@
+.piechart{
+  display: grid;
+  align-items: center;
+  h2{
+    text-align: center;
+  }
+  & .box{
+    display: grid;
+    align-items: center;
+    width: auto;               /* Set the width of the box */
+    height: 400px;              /* Set the height of the box */
+    background-color: #f1f1f171;  /* Set the background color of the box */
+    border: 2px solid #d9dbd2;     /* Add a border around the box */
+    padding: 20px;              /* Add padding inside the box */
+    margin: 20px;               /* Add margin outside the box */
+    border-radius: 10px;
+    box-shadow: 12px 12px 3px 3px rgba(15, 15, 241, 0.158);
+
+    & .position{
+      display: grid;
+      justify-self: center;
+    }
+  }
+}

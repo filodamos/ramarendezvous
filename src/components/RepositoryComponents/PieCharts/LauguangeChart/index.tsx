@@ -12,7 +12,7 @@ import {
   ResponsiveContainer,
 } from 'recharts'
 
-
+import styles from './index.module.css'
 const languagesData = [
   { name: 'JavaScript', value: 3000 },
   { name: 'Python', value: 2000 },
@@ -33,9 +33,10 @@ const dexcol = [
 
 const LanguagePieChart = () => {
   return (
-    <div>
-      <h3>Languages in Repo</h3>
-      <PieChart width={400} height={400}>
+    <div className={styles.piechart}>
+      <h2>Languages in Repo</h2>
+      <div className = {styles.box}>
+      <PieChart className={styles.position} width={400} height={400}>
         <Pie
           data={languagesData}
           dataKey="value"
@@ -51,6 +52,7 @@ const LanguagePieChart = () => {
         <Tooltip />
         <Legend />
       </PieChart>
+      </div>
     </div>
   )
 }

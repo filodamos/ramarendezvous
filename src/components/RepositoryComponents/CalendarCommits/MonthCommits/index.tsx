@@ -92,7 +92,7 @@ const MonthBarChart: React.FC = () => {
           dataKey="deletionsHeight"
           fill="#d73a49"
           stackId="a"
-          radius={[5, 5, 0, 0]}
+          radius={[0, 0, 0, 0]}
         />
       </BarChart>
     </ResponsiveContainer>

@@ -1,15 +1,3 @@
-/* .Details{
-    display:grid;
-    align-items: center;
-    background-color: rgba(13, 99, 17, 0.281);
-    border-radius: 20%;
-    border-style: solid;
-    height: 500px;
-    width: 400px;
-    margin-left: 20px;
-    margin-top: 20px;
-    
-} */
 
 .repopage{
     
@@ -20,21 +8,40 @@
   width: 100%;
   margin-left: 10px;
     
-    
-}
-.some_stats{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
- 
+    & .chart_one {
+      h2{
+        text-align: center;
+      }
+    } 
+
+    & .chart_two{
+    grid-template-columns: 1fr 1fr; 
+
+    & .stats{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        height:auto;
+        width: auto;
+        align-items: center;
+      }
+    }
+    & .chart_three{
+      display: grid;
+     
+      h2{
+        text-align: center;
+      }
+    }
+    & .chart_four{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        height:auto;
+        width: auto;
+        align-items: center;
+      }
+
+
 }
 
-.pie_chart{
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-    height: 100vh;
-     width: 100%;
-  
 
-
-}
 
