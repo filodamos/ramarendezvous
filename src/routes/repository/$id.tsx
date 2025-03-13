@@ -5,14 +5,12 @@ import { createRepo, fetchData, prFetchData } from '../../api'
 import { useMutation, useQuery } from '@tanstack/react-query'
 
 import HorizontalBarChart from '../../../src/components/RepositoryComponents/ScoreCommit'
-import MyPieChart from '../../components/RepositoryComponents/PieCharts/FrequencyChart'
 import LanguagePieChart from '../../components/RepositoryComponents/PieCharts/LauguangeChart'
 import HealthScoreBarChart from '../../components/RepositoryComponents/HealthMetrics/HealthBar'
-import ComponentA from '../../components/RepositoryComponents/HealthMetrics/Metrics'
+import MetricsTable from '../../components/RepositoryComponents/HealthMetrics/Metrics'
 import Calendar from '../../components/RepositoryComponents/CalendarCommits'
-
-
 import LineChartCommits from '../../components/RepositoryComponents/LineChartCommits'
+
 export const Route = createFileRoute('/repository/$id')({
   component: RouteComponent,
 })
@@ -20,7 +18,6 @@ export const Route = createFileRoute('/repository/$id')({
 interface DataResponse {
   message: string
 }
-
 
 function RouteComponent() {
   const { id } = useParams({ strict: false })
@@ -65,25 +62,20 @@ function RouteComponent() {
   return (
     <div className={styles.repopage}>
       <div className={styles.chart_one}>
-        <h2>Commits per Day/ Week/ Month</h2>
-        <div className={styles.days_week_month}>
-          <Calendar />
-        </div>
+        <Calendar />
       </div>
       <div className={styles.chart_two}>
-
         <div className={styles.stats}>
           <HorizontalBarChart />
-          <ComponentA />
+          <MetricsTable />
         </div>
       </div>
       <div className={styles.chart_three}>
-        <h2>Commits over the Month</h2>
         <LineChartCommits />
       </div>
       <div className={styles.chart_four}>
-         <HealthScoreBarChart />
-         <LanguagePieChart />
+        <HealthScoreBarChart />
+        <LanguagePieChart />
       </div>
     </div>
   )

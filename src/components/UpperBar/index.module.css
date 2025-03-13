@@ -1,9 +1,16 @@
 .UpperBar {
-  background: rgba(122, 68, 5, 0.37);
-  display: grid; /* Grid container */
-  grid-template-columns: auto auto;  /* First column for logo, second for buttons */
-  align-items: center;  /* Vertically centers elements */
+background: linear-gradient(
+  to right,
+  #fdffff,  
+  #ae841ac7   
+);
+
+
+  display: grid; 
+  grid-template-columns: auto auto;  
+  align-items: center; 
   padding: 0 10px;
+  
 }
 
 .logo {
@@ -11,14 +18,12 @@
   align-items: center;
   
   & a {
-    font-family: 'Montserrat', 'Arial', sans-serif;  /* Modern font */
-    color: #1a3636;  /* Dark gray text */
-      /* Yellow underline with thickness */
-     /* Position the underline through the middle */
-    font-size: 2.0rem;  /* Bigger font size */
-    font-weight: 600;  /* Bold but not too heavy */
-    letter-spacing: 0.2rem;  /* Spacing between letters */
-    position: relative;  /* Positioning the underline for animation */
+    font-family: 'Montserrat', 'Arial', sans-serif; 
+    color: #1a3636;  
+    font-size: 2.0rem;  
+    font-weight: 600;  
+    letter-spacing: 0.2rem;
+    position: relative;  
     transition: color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
   }
 
@@ -27,10 +32,10 @@
     content: '';
     position: absolute;
     left: 0;
-    bottom: -0.2em;  /* Adjust positioning to enhance underline visibility */
+    bottom: -0.2em;  
     width: 0%;
     height: 2px;
-    background-color: #f8cb04;  /* Yellow underline */
+    background-color: #f8cb04;  
     transition: width 0.3s ease-out;  /* Animate the underline expansion */
   }
 
@@ -43,12 +48,12 @@
 
 
 .upperbar_items {
-  display: grid; /* Grid layout for the buttons */
-  grid-auto-flow: column; /* Items arranged in columns */
-  grid-auto-columns: max-content; /* Adjust columns based on content size */
+  display: grid; 
+  grid-auto-flow: column; 
+  grid-auto-columns: max-content;
   justify-content: end;
   align-items: center; 
-  grid-gap: 5px; /* Space between items */
+  grid-gap: 5px;
   padding: 0 10px;
   font-size: 1rem;
   color: white;
@@ -91,15 +96,17 @@
   transition: max-width 0.3s ease-out;
   width: 400px;
   max-width: 250px;
+  color: #ffffff;
   input {
     max-width: 250px;
     &::placeholder {
       text-decoration: bolder;
-      color: #f0e36d;
+      
     }
   }
   &:hover {
     max-width: 400px;
+    color: #eaea9b;
     & input {
       max-width: 400px;
     }

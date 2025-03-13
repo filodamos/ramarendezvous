@@ -10,6 +10,7 @@ const Calendar = () => {
   return (
     <div className={styles.calendar}>
       {/* Buttons with CSS module classes */}
+      <h2>Commits per Day/ Week/ Month</h2>
       <div className={styles.view}>
         <button
           onClick={() => setView('day')}
@@ -30,6 +31,7 @@ const Calendar = () => {
           Month View
         </button>
       </div>
+      
       <div className={styles.graph}>
         {/* Conditionally render the chart */}
         {view === 'day' && <DayBarChart />}

@@ -66,7 +66,7 @@ const CustomTooltip = ({ payload, label }: any) => {
 
 const MonthBarChart: React.FC = () => {
   return (
-    <ResponsiveContainer width="100%" height={400}>
+    <ResponsiveContainer width="100%" height={200}>
       <BarChart data={data}>
         <XAxis
           dataKey="date"

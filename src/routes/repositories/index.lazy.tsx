@@ -1,9 +1,9 @@
-import { createLazyFileRoute } from "@tanstack/react-router";
-import { Link, useNavigate } from '@tanstack/react-router'
+import { createLazyFileRoute } from '@tanstack/react-router'
+import { useNavigate } from '@tanstack/react-router'
 import styles from './index.module.css'
-export const Route = createLazyFileRoute("/repositories/")({
+export const Route = createLazyFileRoute('/repositories/')({
   component: RouteComponent,
-});
+})
 
 function Repoitems({
   label,
@@ -28,29 +28,68 @@ function Repoitems({
     </button>
   )
 }
+
+const MetricsTable = () => (
+    <div className={styles.list_info}>
+      <table>
+        <tr>
+          <th>Name of the Repository</th>
+          <th>Metrics</th>
+          <th>Braches Info</th>
+        </tr>
+        <tr>
+          <th>First Repository</th>
+          <td>
+            <Repoitems
+              label="View"
+              iconClass="fa-regular fa-eye"
+              url="repository"
+              id="1"
+            />
+          </td>
+        </tr>
+        <tr>
+          <th>Second Repository</th>
+          <td>
+            <Repoitems
+              label="View"
+              iconClass="fa-regular fa-eye"
+              url="repository"
+              id="2"
+            />
+          </td>
+        </tr>
+        <tr>
+          <th>Third Repository</th>
+          <td>
+            <Repoitems
+              label="View"
+              iconClass="fa-regular fa-eye"
+              url="repository"
+              id="3"
+            />
+          </td>
+        </tr>
+        <tr>
+          <th>Second Repository</th>
+          <td>
+            <Repoitems
+              label="View"
+              iconClass="fa-regular fa-eye"
+              url="repository"
+              id="4"
+            />
+          </td>
+        </tr>
+      </table>
+    </div>
+)
+export default MetricsTable
+
 function RouteComponent() {
   return (
     <div className={styles.Box}>
-      <ul className={styles.list}>
-        <li>
-          <p>Fast-Api-Repo 
-          <Repoitems
-            label="View"
-            iconClass="fa-regular fa-eye"
-            url="repository"
-            id="2"
-          /></p>
-        </li>
-        <li>
-          <p>Fast-Api-Repo 
-          <Repoitems
-            label="View"
-            iconClass="fa-regular fa-eye"
-            url="repository"
-            id="3"
-          /></p>
-        </li>
-      </ul>
+      <MetricsTable/>
     </div>
   )
 }

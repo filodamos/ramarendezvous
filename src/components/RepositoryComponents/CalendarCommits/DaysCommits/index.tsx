@@ -9,6 +9,7 @@ import {
 } from 'recharts'
 import styles from './index.module.css' // Import the CSS module
 
+// creates an array of 24 objects, each representing an hour of the day (from 0 to 23) with randomly generated values
 const generateHourlyData = () => {
   return Array.from({ length: 24 }, (_, hour) => {
     const value = Math.floor(Math.random() * 50) + 10 // Random value (10-60)
@@ -53,10 +54,9 @@ const CustomTooltip = ({ payload, label }: any) => {
   return null
 }
 
-
 const DayBarChart: React.FC = () => {
   return (
-    <ResponsiveContainer width="100%" height={400}>
+    <ResponsiveContainer width="100%" height={200}>
       <BarChart data={data}>
         <XAxis
           dataKey="hour"

@@ -5,14 +5,10 @@ import {
   XAxis,
   YAxis,
   Tooltip,
-  PieChart,
-  Pie,
-  Cell,
-  Label,
-  Legend,
   ResponsiveContainer,
 } from 'recharts'
 import styles from './index.module.css'
+
 const commits_data = [
   { commmiter: 'Category A', value: 400 },
   { commmiter: 'Category B', value: 300 },
@@ -27,10 +23,9 @@ const commits_data = [
 const HorizontalBarChart = () => {
   const sortedData = [...commits_data].sort((a, b) => b.value - a.value)
   return (
-    <div className={styles.scorechart}>  
-    <h2>Commit Score of each Team </h2>
-      <div className = {styles.box}>
-      <ResponsiveContainer width="100%" height={300}>
+    <div className = {styles.box}>
+      <h2>Commit Score of each Team </h2>
+      <ResponsiveContainer className={styles.scorechart} width="100%" height={400}>
         <BarChart
           data={sortedData}
           layout="vertical" // Makes bars horizontal
@@ -43,7 +38,6 @@ const HorizontalBarChart = () => {
         </BarChart>
       </ResponsiveContainer>
       </div>
-    </div>
   )
 }
 

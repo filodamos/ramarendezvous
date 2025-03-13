@@ -1,8 +1,10 @@
 import styles from './index.module.css'
-const ComponentA = () => (
-  <div className={styles.table}>
-    <h2>Metrics</h2>
+
+const MetricsTable = () => (
+
+    
   <div className={styles.box}>
+    <h2>Metrics</h2>
     <div className={styles.list_info}>
       <table>
         <tr>
@@ -28,7 +30,6 @@ const ComponentA = () => (
       </table>
       </div>
     </div>
-  </div>
   
 )
-export default ComponentA
+export default MetricsTable

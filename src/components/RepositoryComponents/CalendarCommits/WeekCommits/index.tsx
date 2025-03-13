@@ -55,7 +55,7 @@ const CustomTooltip = ({ payload, label }: any) => {
 
 const WeekBarChart: React.FC = () => {
   return (
-    <ResponsiveContainer width="100%" height={300}>
+    <ResponsiveContainer width="100%" height={200}>
       <BarChart data={data}>
         <XAxis
           dataKey="date"

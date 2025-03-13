@@ -1,15 +1,25 @@
-/* General App Styles */
 .app {
-  display: grid; /* Establish a flexbox container */
-  grid-template-columns: 70px 1fr;
+  display: grid;
+  grid-template-columns: 70px 1fr; /* Sidebar is 70px; main content takes the rest */
   height: 100vh; /* Full viewport height */
-  width: 100vw; /* Full viewport width (to avoid overflow issues) */
-  /* Sidebar and main content */
+  width: 100vw; /* Full viewport width */
+  overflow: hidden; /* Prevents overflow from causing scrollbars */
 }
-.content{
-  height: 100vh; /* Full viewport height */
-  width: 100vw; 
+
+.main-container {
+  display: grid;
+  grid-template-rows: auto 1fr; /* UpperBar takes necessary height; content fills remaining space */
+  height: 100vh;
+  
+  & .content {
+      overflow-x: hidden; /* Enables scrolling if content overflows */
+      overflow-y: auto; 
+  } /* Ensures it fills the full height of the viewport */
 }
+
+
+
+
 /* Sidebar styles */
 
 /* Sidebar Expanded */

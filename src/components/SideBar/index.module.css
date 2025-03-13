@@ -3,19 +3,17 @@
     to bottom,
     #1a3636,
     #222222
-  ); /* Gradient background */
-  width: 70px; /* Default width when collapsed */
-  /*  Full height */
+  ); 
+  width: 70px; 
   color: white;
   display: grid;
-  grid-auto-flow: row; /* Items arranged in rows */
-  grid-auto-rows: max-content; /* Adjust rows based on content size */
-  justify-content: center; /* Align items to the center */
+  grid-auto-flow: row; 
+  grid-auto-rows: max-content;
   align-items: center;
   transition:
     width 0.6s ease,
     background-color 0.6s ease;
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3); 
   z-index: 10;
 
   .toggle_button {
@@ -28,38 +26,38 @@
     border: none;
 
     .container {
-      display: grid; /* Grid for vertical bars */
+      display: grid; 
       grid-template-rows: repeat(
         3,
         5px
-      ); /* Three rows, each 5px tall (the height of each bar) */
-      grid-gap: 4px; /* Space between the bars */
-      height: 22px; /* Total height */
-      width: 35px; /* Hamburger width */
+      ); 
+      grid-gap: 4px; 
+      height: 22px;
+      width: 35px;
       position: relative;
 
       .bar1,
       .bar2,
       .bar3 {
         width: 100%;
-        height: 4px; /* Height of each individual bar */
-        background-color: #f8cb04ef; /* Visible white color */
-        border-radius: 5px; /* Rounded edges for cleaner look */
+        height: 4px; 
+        background-color: #f8cb04ef; 
+        border-radius: 5px; 
         transition:
           transform 0.4s ease,
-          opacity 0.4s ease; /* Smooth transitions */
+          opacity 0.4s ease; 
       }
     }
     .change .bar1 {
-      transform: translateY(7px) rotate(45deg); /* Rotate bar1 */
+      transform: translateY(7px) rotate(45deg); 
     }
 
     .change .bar2 {
-      opacity: 0; /* Hide bar2 when the hamburger is toggled */
+      opacity: 0; 
     }
 
     .change .bar3 {
-      transform: translateY(-7px) rotate(-45deg); /* Rotate bar3 */
+      transform: translateY(-7px) rotate(-45deg); 
     }
   }
   &[data-sidebaropen="false"] {
@@ -80,12 +78,12 @@
   &[data-sidebaropen="true"] {
     width: 200px;
     .nav_links {
-      display: grid; /* here wihout the grid display the button info will out of order*/
-      justify-items: center; /* Ensure horizontal centering */
-      align-items: center; /* Ensure vertical centering */
-      row-gap: 15px; /* Add space between links */
-      padding: 0; /* Remove any unwanted padding */
-      margin: 0 auto; /* Center within sidebar area */
+      display: grid; 
+      justify-items: center; 
+      align-items: center; 
+      row-gap: 15px;
+      padding: 0;
+      margin: 0 auto; 
       & i {
         margin-right: 5px;
       }

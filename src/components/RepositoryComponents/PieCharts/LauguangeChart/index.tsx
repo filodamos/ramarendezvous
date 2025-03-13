@@ -33,9 +33,8 @@ const dexcol = [
 
 const LanguagePieChart = () => {
   return (
-    <div className={styles.piechart}>
+    <div className = {styles.box}>
       <h2>Languages in Repo</h2>
-      <div className = {styles.box}>
       <PieChart className={styles.position} width={400} height={400}>
         <Pie
           data={languagesData}
@@ -52,7 +51,6 @@ const LanguagePieChart = () => {
         <Tooltip />
         <Legend />
       </PieChart>
-      </div>
     </div>
   )
 }

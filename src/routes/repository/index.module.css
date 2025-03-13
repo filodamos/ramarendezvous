@@ -1,47 +1,33 @@
-
-.repopage{
-    
+.repopage {
   display: grid;
-  grid-template-columns: 1fr 1fr;  /* 2 equal columns */
-  grid-template-rows: 1fr 1fr;  /* 2 equal rows */
+  grid-template-columns: 1fr 1fr; /* 2 columns that shrink but stay readable */
+  grid-template-rows: 1fr 1fr; /* Rows adjust to content */
   height: 100vh;
-  width: 100%;
-  margin-left: 10px;
-    
-    & .chart_one {
-      h2{
-        text-align: center;
-      }
-    } 
+  width: 100vw; /* Ensure no extra space outside */
+  box-sizing: border-box;
+  gap: 20px;
 
-    & .chart_two{
-    grid-template-columns: 1fr 1fr; 
+  & .chart_one {
+    display: grid;
+    width: 100%;
+  }
 
-    & .stats{
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        height:auto;
-        width: auto;
-        align-items: center;
-      }
-    }
-    & .chart_three{
+  & .chart_two {
+    & .stats {
       display: grid;
-     
-      h2{
-        text-align: center;
-      }
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
     }
-    & .chart_four{
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        height:auto;
-        width: auto;
-        align-items: center;
-      }
+  }
 
+  & .chart_three {
+    display: grid;
+    box-sizing: border-box;
+  }
 
+  & .chart_four {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr;
+    gap: 20px;
+  }
 }
-
-
-

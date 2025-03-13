@@ -4,24 +4,18 @@ import {
   XAxis,
   YAxis,
   Tooltip,
-  PieChart,
-  Pie,
-  Cell,
-  Label,
-  Legend,
   ResponsiveContainer,
 } from 'recharts'
-
 import styles from './index.module.css'
+
 const score = [
   { name: 'Health Score', value: 75 }, // Health score of 75
 ]
 
 const HealthScoreBarChart = () => {
   return (
-    <div className={styles.bar}>
-      <h2>HealthScore</h2>
       <div className={styles.box}>
+        <h2>HealthScore</h2>
         <ResponsiveContainer
           className={styles.responsiveChart}
           width="50%"
@@ -36,7 +30,6 @@ const HealthScoreBarChart = () => {
           </BarChart>
         </ResponsiveContainer>
       </div>
-    </div>
   )
 }
 

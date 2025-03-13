@@ -1,27 +1,23 @@
-.bar{
+.box {
   display: grid;
   align-items: center;
- 
-  h2{
+  grid-template-rows: 15% 85%;
+  width: 100%;
+  height: 90%;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 10px;
+  background-color: #f1f1f171;
+  border: 2px solid #d9dbd2;
+  box-shadow: 12px 12px 3px 3px rgba(15, 15, 241, 0.158);
+  box-sizing: border-box;
+
+  h2 {
     text-align: center;
   }
-  & .box{
+
+  & .responsiveChart {
     display: grid;
-    align-items: center;
-    width: auto;               /* Set the width of the box */
-    height: 400px;              /* Set the height of the box */
-    background-color: #f1f1f171;  /* Set the background color of the box */
-    border: 2px solid #d9dbd2;     /* Add a border around the box */
-    padding: 20px;              /* Add padding inside the box */
-    margin: 20px;               /* Add margin outside the box */
-    border-radius: 10px;
-    /* box-shadow: 10px 10px 10px rgba(88, 85, 85, 0.514);  */
-    box-shadow: 12px 12px 3px 3px rgba(15, 15, 241, 0.158);
-    & .responsiveChart {
-      display: grid;
-      justify-self: center; /* Aligns this specific item */ 
-    }
+    justify-self: center;
   }
-
-
 }

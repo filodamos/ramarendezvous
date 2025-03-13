@@ -1,4 +1,3 @@
-import React from 'react'
 import {
   LineChart,
   Line,
@@ -9,7 +8,8 @@ import {
   Legend,
   ResponsiveContainer,
 } from 'recharts'
-import styles from './index.module.css' // Import the CSS file
+import styles from './index.module.css' 
+
 const generateMonthlyData = (year, month) => {
   const daysInMonth = new Date(year, month, 0).getDate() // Get the number of days in the month
   const data = []
@@ -29,41 +29,42 @@ const generateMonthlyData = (year, month) => {
 }
 
 const LineChartCommits = () => {
-  // Generate data for March 2025
+ 
   const data = generateMonthlyData(2025, 3) // March is the 3rd month
 
   return (
     <div className={styles.box}>
-    <ResponsiveContainer width="100%" height={300}>
-      <LineChart data={data}>
-        {/* Grid and axes */}
-        <CartesianGrid strokeDasharray="3 3" />
+      <h2>Commits over the Month</h2>
+      <ResponsiveContainer className={styles.graph} width="100%" height={300}>
+        <LineChart data={data}>
+          {/* Grid and axes */}
+          <CartesianGrid strokeDasharray="3 3" />
 
-        {/* X-Axis with only day number */}
-        <XAxis
-          dataKey="day" // Use the day number instead of the full date
-        />
+          {/* X-Axis with only day number */}
+          <XAxis
+            dataKey="day" // Use the day number instead of the full date
+          />
 
-        {/* Y-Axis with labels */}
-        <YAxis
-          label={{ value: 'Commits', angle: -90, position: 'insideLeft' }}
-        />
+          {/* Y-Axis with labels */}
+          <YAxis
+            label={{ value: 'Commits', angle: -90, position: 'insideLeft' }}
+          />
 
-        {/* Tooltip */}
-        <Tooltip />
+          {/* Tooltip */}
+          <Tooltip />
 
-        {/* Line with no labels over the points */}
-        <Line
-          type="monotone"
-          dataKey="value"
-          stroke="#28a745"
-          activeDot={{ r: 8 }}
-        />
+          {/* Line with no labels over the points */}
+          <Line
+            type="monotone"
+            dataKey="value"
+            stroke="#28a745"
+            activeDot={{ r: 8 }}
+          />
 
-        {/* Optional: Add Legend */}
-        <Legend />
-      </LineChart>
-    </ResponsiveContainer>
+          {/* Optional: Add Legend */}
+          <Legend />
+        </LineChart>
+      </ResponsiveContainer>
     </div>
   )
 }
