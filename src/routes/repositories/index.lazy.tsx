@@ -30,7 +30,7 @@ function Repoitems({
 }
 
 const MetricsTable = () => (
-    <div className={styles.list_info}>
+    <div className={styles.MetricsTable}>
       <table>
         <tr>
           <th>Name of the Repository</th>
@@ -47,6 +47,7 @@ const MetricsTable = () => (
               id="1"
             />
           </td>
+	  <td></td>
         </tr>
         <tr>
           <th>Second Repository</th>
@@ -58,6 +59,7 @@ const MetricsTable = () => (
               id="2"
             />
           </td>
+	  <td></td>
         </tr>
         <tr>
           <th>Third Repository</th>
@@ -69,6 +71,7 @@ const MetricsTable = () => (
               id="3"
             />
           </td>
+	  <td></td>
         </tr>
         <tr>
           <th>Second Repository</th>
@@ -80,6 +83,7 @@ const MetricsTable = () => (
               id="4"
             />
           </td>
+	  <td></td>
         </tr>
       </table>
     </div>

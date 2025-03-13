@@ -4,13 +4,21 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* color: rgba(255, 255, 255, 0.87); */
+  color: #213547;
+  /* background-color: #242424; */
+  background-color: #ffffff;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --normal-gap: 0.75rem;
+  --double-gap: 1.5rem;
+  --half-gap: 0.375rem;
+
+  --normal-box-shadow: 5px 5px 3px 3px rgba(15, 15, 241, 0.158);
 }
 
 a {
@@ -22,7 +30,6 @@ a:hover {
   color: #535bf2;
 }
 
-
 body {
   margin: 0;
   display: flex;
@@ -30,7 +37,6 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
-
 
 h1 {
   font-size: 3.2em;
@@ -67,4 +73,52 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+.card {
+  display: grid;
+  align-items: center;
+  grid-template-rows: max-content 1fr max-content;
+  width: 80%;
+  height: 100%;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 10px;
+  background-color: #f1f1f171;
+  border: 2px solid #d9dbd2;
+  box-shadow: 12px 12px 3px 3px rgba(15, 15, 241, 0.158);
+  box-sizing: border-box;
+  .card-header {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+  }
+  .card-body {
+  }
+  .card-actions {
+    display: grid;
+    justify-content: end;
+    grid-auto-flow: column;
+    gap: var(--half-gap);
+  }
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 70px 1fr; /* Sidebar is 70px; main content takes the rest */
+  height: 100vh; /* Full viewport height */
+  width: 100vw; /* Full viewport width */
+  overflow: hidden; /* Prevents overflow from causing scrollbars */
+}
+
+.main-container {
+  display: grid;
+  grid-template-rows: auto 1fr; /* UpperBar takes necessary height; content fills remaining space */
+  height: 100vh;
+
+  & .content {
+    overflow-x: hidden; /* Enables scrolling if content overflows */
+    overflow-y: auto;
+    padding: var(--normal-gap);
+  } /* Ensures it fills the full height of the viewport */
 }
