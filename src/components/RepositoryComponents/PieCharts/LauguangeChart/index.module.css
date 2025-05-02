@@ -1,23 +1,4 @@
-.box {
-  display: grid;
-  align-items: center;
-  grid-template-rows: 15% 85%;
-  width: 80%;
-  height: 90%;
-  padding: 20px;
-  margin: 10px;
-  border-radius: 10px;
-  background-color: #f1f1f171;
-  border: 2px solid #d9dbd2;
-  box-shadow: 12px 12px 3px 3px rgba(15, 15, 241, 0.158);
-  box-sizing: border-box;
+.piechart {
+ place-items: center;
 
-  h2 {
-    text-align: center;
-  }
-
-  & .position {
-    display: grid;
-    justify-self: center;
-  }
 }

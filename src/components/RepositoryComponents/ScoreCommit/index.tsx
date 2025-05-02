@@ -1,4 +1,3 @@
-
 import {
   BarChart,
   Bar,
@@ -23,21 +22,25 @@ const commits_data = [
 const HorizontalBarChart = () => {
   const sortedData = [...commits_data].sort((a, b) => b.value - a.value)
   return (
-    <div className = {styles.box}>
-      <h2>Commit Score of each Team </h2>
-      <ResponsiveContainer className={styles.scorechart} width="100%" height={400}>
-        <BarChart
-          data={sortedData}
-          layout="vertical" // Makes bars horizontal
-          margin={{ top: 20, right: 30, left: 40, bottom: 5 }}
-        >
-          <XAxis type="number" />
-          <YAxis dataKey="commmiter" type="category" />
-          <Tooltip />
-          <Bar dataKey="value" fill="#8884d8" />
-        </BarChart>
-      </ResponsiveContainer>
+    <div className={`${styles.commitscore_team} card`}>
+      <div className="card-header">
+        <h2>Commit Score of each Team </h2>
       </div>
+      <div className="card-body">
+        <ResponsiveContainer width="100%" height={400}>
+          <BarChart
+            data={sortedData}
+            layout="vertical" // Makes bars horizontal
+            margin={{ top: 20, right: 30, left: 40, bottom: 5 }}
+          >
+            <XAxis type="number" />
+            <YAxis dataKey="commmiter" type="category" />
+            <Tooltip />
+            <Bar dataKey="value" fill="#8884d8" />
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
+    </div>
   )
 }
 

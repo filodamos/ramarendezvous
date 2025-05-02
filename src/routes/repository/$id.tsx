@@ -9,7 +9,7 @@ import LanguagePieChart from '../../components/RepositoryComponents/PieCharts/La
 import HealthScoreBarChart from '../../components/RepositoryComponents/HealthMetrics/HealthBar'
 import MetricsTable from '../../components/RepositoryComponents/HealthMetrics/Metrics'
 import Calendar from '../../components/RepositoryComponents/CalendarCommits'
-import LineChartCommits from '../../components/RepositoryComponents/LineChartCommits'
+import LineChartBox from '../../components/RepositoryComponents/LineChartCommits/linechartbox'
 
 export const Route = createFileRoute('/repository/$id')({
   component: RouteComponent,
@@ -71,7 +71,7 @@ function RouteComponent() {
         </div>
       </div>
       <div className={styles.chart_three}>
-        <LineChartCommits />
+        <LineChartBox />
       </div>
       <div className={styles.chart_four}>
         <HealthScoreBarChart />

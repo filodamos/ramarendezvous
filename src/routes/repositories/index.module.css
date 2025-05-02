@@ -6,7 +6,7 @@
       height: 100%;
       border-collapse: collapse;
       font-family: Arial, sans-serif;
-      /* box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2); */
+    
       border-radius: 15px;
       overflow: hidden;
     }
@@ -29,13 +29,13 @@
     tr:nth-child(odd) {
       background-color: #f3f4f6;
       border: 1px solid #ddd;
-      /* box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2); */
+    
 
     }
     tr:nth-child(even) {
       background-color: #7984762d;
       border: 1px solid #ddd;
-      /* box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2); */
+     
 
     }
 
@@ -44,9 +44,7 @@
       background-color: rgba(43, 86, 0, 0.265);
       color: #2f2b0c;
       transition: 0.3s;    
-      /* th{
-        text-decoration: underline yellow;
-      } */
+
    
     }
   }

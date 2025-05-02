@@ -1,23 +1,13 @@
-.box {
-  display: grid;
+.linechart {
   align-items: center;
-  grid-template-rows: 15% 85%;
-  width: 100%;
-  height: 90%;
-  padding: 20px;
-  margin: 10px;
-  border-radius: 10px;
-  box-sizing: border-box;
-  background-color: #f1f1f171;
-  border: 2px solid #d9dbd2;
-  box-shadow: 12px 12px 3px 3px rgba(15, 15, 241, 0.158);
 
-  h2 {
-    text-align: center;
-    margin: 0;
-  }
-  & .graph {
+  & .viewlines {
     display: grid;
-    margin-top: 30px;
+    grid-auto-flow:column;
+    border-radius: 10px;
+    background-color: #f1f1f171;
+    border: 2px solid #d9dbd2;
+    box-shadow: var(--normal-box-shadow);
+   
   }
 }

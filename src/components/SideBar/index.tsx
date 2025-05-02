@@ -15,18 +15,10 @@ function MenuItem({
   const navigate = useNavigate()
 
   return (
-    <div className={styles.menu_item_container}>
-      <div className={styles.menu_icon}>
-        <i className={iconClass} />
-      </div>
-      <button
-        className={styles.menu_item}
-        onClick={() => navigate({ to: url })}
-      >
-        <i className={iconClass} />
-        {label}
-      </button>
-    </div>
+    <button className={styles.menu_item} onClick={() => navigate({ to: url })}>
+      <i className={iconClass} />
+      {label}
+    </button>
   )
 }
 
@@ -40,29 +32,51 @@ export function SideBar() {
 
   return (
     <div className={styles.SideBar} data-sidebaropen={sidebarOpen}>
-      <button onClick={toggleSidebar} className={styles.toggle_button}>
+      <button onClick={toggleSidebar} className={styles.hamburger_button}>
         <div
-          className={`${styles.container} ${sidebarOpen ? styles.change : ''}`}
+          className={`${styles.three_bars} ${sidebarOpen ? styles.change : ''}`}
         >
           <div className={styles.bar1}></div>
           <div className={styles.bar2}></div>
           <div className={styles.bar3}></div>
         </div>
       </button>
-      <ul className={styles.nav_links}>
-        <MenuItem
-          label="Home"
-          iconClass="fa-solid fa-house-chimney"
-          url="/"
-        />
-        <MenuItem label="Info" iconClass="fa-regular fa-clipboard" />
-        <MenuItem label="Settings" iconClass="fa-solid fa-gears" />
-        <MenuItem
-          label="Repositories"
-          iconClass="fa-solid fa-book"
-          url="/repositories"
-        />
-      </ul>
+      <div  className={styles.nav_links}>
+        {sidebarOpen ? (
+     
+            <div className={styles.menu_icons_buttons}>
+              <MenuItem
+                label="Home"
+                iconClass="fa-solid fa-house-chimney"
+                url="/"
+              />
+              <MenuItem
+                label="Info"
+                iconClass="fa-regular fa-clipboard"
+                url="null"
+              />
+              <MenuItem
+                label="Settings"
+                iconClass="fa-solid fa-gears"
+                url="null"
+              />
+              <MenuItem
+                label="Repositories"
+                iconClass="fa-solid fa-book"
+                url="/repositories"
+              />
+           
+          </div>
+        ) : (
+          <div className={styles.menu_icons_buttons}>
+            <i className="fa-solid fa-house-chimney" />
+            <i className="fa-regular fa-clipboard" />
+            <i className="fa-solid fa-gears" />
+            <i className="fa-solid fa-book" />
+          </div>
+        )}
+      </div>
+      {/* <div onMouseLeave={toggleSidebar}></div> */}
     </div>
   )
 }

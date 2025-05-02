@@ -1,95 +1,76 @@
 .SideBar {
-  background: linear-gradient(
-    to bottom,
-    #1a3636,
-    #222222
-  ); 
-  width: 70px; 
+  background: linear-gradient(to bottom, #1a3636, #222222);
+  width: 70px;
   color: white;
   display: grid;
-  grid-auto-flow: row; 
-  grid-auto-rows: max-content;
-  align-items: center;
-  transition:
-    width 0.6s ease,
-    background-color 0.6s ease;
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3); 
+  grid-template-rows: auto 1fr;
+  align-items: start;
+  transition: width 0.6s ease;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
   z-index: 10;
+  overflow: hidden;
 
-  .toggle_button {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    align-items: center;
-    justify-self: center;
+  .hamburger_button {
+    margin: 10px auto;
     cursor: pointer;
     background: none;
     border: none;
+    display: grid;
+    place-items: center;
 
-    .container {
-      display: grid; 
-      grid-template-rows: repeat(
-        3,
-        5px
-      ); 
-      grid-gap: 4px; 
+    & .three_bars {
+      display: grid;
+      grid-template-rows: repeat(3, 5px);
+      gap: 4px;
       height: 22px;
       width: 35px;
-      position: relative;
 
       .bar1,
       .bar2,
       .bar3 {
         width: 100%;
-        height: 4px; 
-        background-color: #f8cb04ef; 
-        border-radius: 5px; 
+        height: 4px;
+        background-color: #f8cb04ef;
+        border-radius: 5px;
         transition:
           transform 0.4s ease,
-          opacity 0.4s ease; 
+          opacity 0.4s ease;
       }
     }
+
     .change .bar1 {
-      transform: translateY(7px) rotate(45deg); 
+      transform: translateY(7px) rotate(45deg);
     }
 
     .change .bar2 {
-      opacity: 0; 
+      opacity: 0;
     }
 
     .change .bar3 {
-      transform: translateY(-7px) rotate(-45deg); 
+      transform: translateY(-7px) rotate(-45deg);
     }
   }
-  &[data-sidebaropen="false"] {
-    .nav_links {
+
+  .nav_links {
+    display: grid;
+    justify-items: center;
+    padding-top: 20px;
+
+    & .menu_icons_buttons {
       display: grid;
+      grid-template-rows: repeat(4, auto);
+      gap: 30px;
       align-items: center;
-      justify-items: center;
-      row-gap: 30px;
-      padding: 0;
-      margin: 0 auto;
-      margin-bottom: 10px;
-      width: 100%;
-      .menu_item {
-        display: none;
-      }
     }
   }
-  &[data-sidebaropen="true"] {
+
+  &[data-sidebaropen='true'] {
     width: 200px;
-    .nav_links {
-      display: grid; 
-      justify-items: center; 
-      align-items: center; 
-      row-gap: 15px;
-      padding: 0;
-      margin: 0 auto; 
-      & i {
-        margin-right: 5px;
+    button {
+      white-space: nowrap;
+      i {
+        padding: 5px;
       }
-    }
-    .menu_icon {
-      display: none;
     }
   }
 }

@@ -1,64 +1,47 @@
 .UpperBar {
-background: linear-gradient(
-  to right,
-  #fdffff,  
-  #ae841ac7   
-);
-
-
-  display: grid; 
-  grid-template-columns: auto auto;  
-  align-items: center; 
+  background: linear-gradient(to right, #fdffff, #ae841ac7);
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: center;
   padding: 0 10px;
-  
 }
 
 .logo {
   justify-self: center;
-  align-items: center;
-  
-  & a {
-    font-family: 'Montserrat', 'Arial', sans-serif; 
-    color: #1a3636;  
-    font-size: 2.0rem;  
-    font-weight: 600;  
+
+  a {
+    font-family: 'Montserrat', 'Arial', sans-serif;
+    color: #1a3636;
+    font-size: 2.0rem;
+    font-weight: 600;
     letter-spacing: 0.2rem;
-    position: relative;  
-    transition: color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-  }
+    position: relative;
 
-  /* Add a smooth highlight underline animation effect */
-  a::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -0.2em;  
-    width: 0%;
-    height: 2px;
-    background-color: #f8cb04;  
-    transition: width 0.3s ease-out;  /* Animate the underline expansion */
-  }
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -0.2em;
+      width: 0%;
+      height: 2px;
+      background-color: #f8cb04;
+      transition: width 0.3s ease-out;
+    }
 
-
-
-  a:hover::after {
-    width: 100%;  /* Expand underline to the full width of the text */
+    &:hover::after {
+      width: 100%;
+    }
   }
 }
 
-
 .upperbar_items {
-  display: grid; 
-  grid-auto-flow: column; 
+  display: grid;
+  grid-auto-flow: column;
   grid-auto-columns: max-content;
   justify-content: end;
-  align-items: center; 
   grid-gap: 5px;
   padding: 0 10px;
-  font-size: 1rem;
-  color: white;
-  overflow: visible;
-
+ 
 }
 
 /* General button styles */
@@ -75,39 +58,40 @@ background: linear-gradient(
   transition: background-color 0.3s ease, color 0.3s ease;
   max-width: 150px;
   width: auto;
+
   &:hover {
     background-color: rgba(34, 39, 29, 0.24);
     color: #f0e36d;
     border: 1px solid #055e1bb4;
   }
-  & i {
+
+  i {
     margin-right: 8px;
   }
 }
 
-/* Styling specific to the search button and expanding search bar */
+/* Styling for the search bar */
 .SearchBar {
-  position: relative; /* Contain elements */
-  height: 2.4rem; /* Same height as buttons */
+  height: 2.4rem;
   display: grid;
-  align-items: right;
   overflow: visible;
-  text-decoration: bold;
   transition: max-width 0.3s ease-out;
   width: 400px;
   max-width: 250px;
-  color: #ffffff;
+
   input {
     max-width: 250px;
+
     &::placeholder {
-      text-decoration: bolder;
-      
+      font-weight: bold;
     }
   }
+
   &:hover {
     max-width: 400px;
     color: #eaea9b;
-    & input {
+
+    input {
       max-width: 400px;
     }
   }

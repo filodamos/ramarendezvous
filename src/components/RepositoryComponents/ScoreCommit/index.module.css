@@ -1,20 +1,4 @@
-.box {
+.commitscore_team {
   display: grid;
   align-items: center;
-  grid-template-rows: 15% 85%;
-  width: 100%;
-  height: 100%;
-  background-color: #f1f1f171;
-  border: 2px solid #d9dbd2;
-  padding: 20px;
-  margin: 10px;
-  border-radius: 10px;
-  box-shadow: 12px 12px 3px 3px rgba(15, 15, 241, 0.158);
-  box-sizing: border-box;
-
-  h2 {
-    text-align: center;
-    margin-top: 0;
-    padding: 0;
-  }
 }

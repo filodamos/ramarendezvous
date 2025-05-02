@@ -1,15 +1,11 @@
 .repopage {
   display: grid;
   grid-template-columns: 1fr 1fr; /* 2 columns that shrink but stay readable */
-  grid-template-rows: 1fr 1fr; /* Rows adjust to content */
-  height: 100vh;
-  width: 100vw; /* Ensure no extra space outside */
-  box-sizing: border-box;
+  /* grid-template-rows: 1fr 1fr; Rows adjust to content */
   gap: 20px;
 
   & .chart_one {
     display: grid;
-    width: 100%;
   }
 
   & .chart_two {
@@ -22,7 +18,6 @@
 
   & .chart_three {
     display: grid;
-    box-sizing: border-box;
   }
 
   & .chart_four {

@@ -1,4 +1,9 @@
-import React from 'react'
+import { useState } from 'react'
+import styles from './index.module.css'
+import DatePicker from 'react-datepicker'
+import { useQuery } from '@tanstack/react-query'
+import 'react-datepicker/dist/react-datepicker.css'
+import { fetchData, generateChartData } from '../CalendarUtils'
 import {
   ResponsiveContainer,
   BarChart,
@@ -8,54 +13,16 @@ import {
   Bar,
 } from 'recharts'
 
-import styles from './index.module.css'
 
-const generateMonthlyData = () => {
-  const daysInMonth = 30 // Adjust if needed
-  const startDate = new Date(2025, 1, 1) // February 1, 2025 (Month index 1 for Feb)
-
-  return Array.from({ length: daysInMonth }, (_, i) => {
-    const date = new Date(startDate)
-    date.setDate(date.getDate() + i)
-
-    const value = Math.floor(Math.random() * 40) + 10 // Random value (10-50)
-    const additions = Math.floor(Math.random() * 30) // Random additions (0-30)
-    const deletions = Math.floor(Math.random() * 30) // Random deletions (0-30)
-
-    return {
-      date: date.toISOString().split('T')[0],
-      value,
-      additions,
-      deletions,
-    }
-  })
-}
-
-const rawData = generateMonthlyData()
-
-const data = rawData.map(({ date, value, additions, deletions }) => {
-  const totalEdits = additions + deletions
-
-  const additionsHeight =
-    totalEdits > 0 ? (additions / totalEdits) * value : value
-  const deletionsHeight = totalEdits > 0 ? (deletions / totalEdits) * value : 0
-
-  return {
-    date,
-    additionsHeight,
-    deletionsHeight,
-    additions,
-    deletions,
-  }
-})
 const CustomTooltip = ({ payload, label }: any) => {
   if (payload && payload.length) {
-    const { additions, deletions } = payload[0].payload
+    const { additions, deletions, commits } = payload[0].payload
     return (
       <div className={styles.customTooltip}>
         <p>
           <strong>{label}</strong>
         </p>
+        <p className={styles.additionText}>Commits: {commits}</p>
         <p className={styles.additionText}>Additions: {additions}</p>
         <p className={styles.deletionText}>Deletions: {deletions}</p>
       </div>
@@ -64,38 +31,100 @@ const CustomTooltip = ({ payload, label }: any) => {
   return null
 }
 
-const MonthBarChart: React.FC = () => {
-  return (
-    <ResponsiveContainer width="100%" height={200}>
-      <BarChart data={data}>
-        <XAxis
-          dataKey="date"
-          tickFormatter={(date) =>
-            new Date(date).toLocaleDateString('en-US', {
-              month: 'short',
-              day: '2-digit',
-            })
-          }
-          angle={0} // Tilt labels for better spacing
-          interval={2} // Show fewer labels for readability
-        />
-        <YAxis />
-        <Tooltip content={<CustomTooltip />} />
+const MonthBarChart: React.FC<{
+  selectedMonth: { from: Date; to: Date } | undefined
+  setSelectedMonth: React.Dispatch<
+    React.SetStateAction<{ from: Date; to: Date } | undefined>
+  >
+}> = ({ selectedMonth, setSelectedMonth }) => {
+  // const [selectedMonth, setSelectedMonth] = useState<
+  //   { from: Date; to: Date } | undefined
+  // >(undefined)
 
-        <Bar
-          dataKey="additionsHeight"
-          fill="#28a745"
-          stackId="a"
-          radius={[0, 0, 0, 0]}
+  const fetchMonthData = async (selectedMonth) => {
+    return await fetchData('month', selectedMonth.from, selectedMonth.to)
+  }
+
+  const { data, refetch, error, isLoading } = useQuery({
+    queryKey: ['per_day', selectedMonth],
+    queryFn: () => fetchMonthData(selectedMonth),
+    enabled: !!selectedMonth, // Here if the selectedMonth is empty basically enabled: !!selectedMonth is false, so useQuery does not run.
+    // So the data is undefined
+  })
+
+  if (isLoading) return <div>Loading...</div>
+  if (error) return <div>An error occurred: {error.message}</div>
+
+  const chartData = generateChartData(data, selectedMonth, 'month')
+
+  const getLastDayOfMonth = (year: number, month: number) => {
+    // We set the date to the 0th day of the next month, which gives us the last day of the selected month
+    const date = new Date(year, month, 0)
+    return date
+  }
+
+  const handleMonthChange = (date: Date) => {
+    if (date) {
+      const year = date.getFullYear()
+      const month = date.getMonth() // Month is 0-based (0 = January, 1 = February, etc.)
+
+      const from = new Date(year, month, 1) // First day of the selected month
+      const to = getLastDayOfMonth(year, month + 1) // Last day of the selected month
+
+      console.log(`here${to.toISOString().split('T')[0]}`)
+      setSelectedMonth({ from, to })
+    }
+  }
+
+  return (
+    <div>
+      <div>
+        <label htmlFor="month-picker">Select Month and Year</label>
+        <DatePicker
+          selected={selectedMonth?.from}
+          onChange={handleMonthChange}
+          showMonthYearPicker
+          dateFormat="yyyy-MM"
+          placeholderText="Select a month"
         />
-        <Bar
-          dataKey="deletionsHeight"
-          fill="#d73a49"
-          stackId="a"
-          radius={[0, 0, 0, 0]}
-        />
-      </BarChart>
-    </ResponsiveContainer>
+      </div>
+
+      <h2>
+        Month from {selectedMonth?.from.toLocaleDateString()} to{' '}
+        {selectedMonth?.to.toLocaleDateString()}
+      </h2>
+
+      <ResponsiveContainer width="100%" height={200}>
+        <BarChart data={chartData}>
+          <XAxis
+            dataKey="day"
+            tickFormatter={(date) =>
+              new Date(date).toLocaleDateString('en-US', {
+                month: 'short',
+                day: '2-digit',
+              })
+            }
+            angle={0} // Tilt labels for better spacing
+            interval={2} // Show fewer labels for readability
+          />
+          <YAxis />
+          <Tooltip content={<CustomTooltip />} />
+ 
+          <Bar
+            dataKey="additionsHeight"
+            fill="#28a745"
+            stackId="a"
+            radius={[0, 0, 0, 0]}
+          />
+          <Bar
+            dataKey="deletionsHeight"
+            fill="#d73a49"
+            stackId="a"
+            radius={[0, 0, 0, 0]}
+          />
+        </BarChart>
+      </ResponsiveContainer>
+    </div>
   )
 }
 export default MonthBarChart

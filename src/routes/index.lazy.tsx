@@ -7,7 +7,7 @@ export const Route = createLazyFileRoute('/')({
 
 const TableComponent = ({ data }: { data: any }) => {
   return (
-    <table className="table">
+    <table>
       <tbody>
         <i className="fa-solid fa-thumbtack"></i>
         {data.map((row: any, index: any) => (
@@ -56,9 +56,8 @@ function Index() {
   return (
     <div className={styles.layout}>
       <h2>Welcome Home!</h2>
-      <p>
-        <h3>Check out the repository stats</h3>
-      </p>
+      <h3>Check out the repository stats</h3>
+      
       <div className={styles.notes}>
         <div className={styles.box1}>
           <TableComponent data={tableData2} />

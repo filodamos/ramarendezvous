@@ -9,16 +9,18 @@ import {
 import styles from './index.module.css'
 
 const score = [
-  { name: 'Health Score', value: 75 }, // Health score of 75
+  { name: 'Health Score', value: 75 }, 
 ]
 
 const HealthScoreBarChart = () => {
   return (
-      <div className={styles.box}>
+    <div className={`${styles.healthbar} card`}>
+      <div className="card-header">
         <h2>HealthScore</h2>
+      </div>
+      <div className="card-body">
         <ResponsiveContainer
           className={styles.responsiveChart}
-          width="50%"
           height={300}
           minWidth={50}
         >
@@ -30,6 +32,7 @@ const HealthScoreBarChart = () => {
           </BarChart>
         </ResponsiveContainer>
       </div>
+    </div>
   )
 }
 

@@ -1,15 +1,9 @@
 import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
   Tooltip,
   PieChart,
   Pie,
   Cell,
-  Label,
   Legend,
-  ResponsiveContainer,
 } from 'recharts'
 
 import styles from './index.module.css'
@@ -33,24 +27,31 @@ const dexcol = [
 
 const LanguagePieChart = () => {
   return (
-    <div className = {styles.box}>
-      <h2>Languages in Repo</h2>
-      <PieChart className={styles.position} width={400} height={400}>
-        <Pie
-          data={languagesData}
-          dataKey="value"
-          nameKey="name"
-          outerRadius={150}
-          fill="#8884d8"
-          label
-        >
-          {languagesData.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={dexcol[index % dexcol.length]} />
-          ))}
-        </Pie>
-        <Tooltip />
-        <Legend />
-      </PieChart>
+    <div className={`${styles.piechart} card`}>
+      <div className="card-header">
+        <h2>Languages in Repo</h2>
+      </div>
+      <div className="card-body">
+        <PieChart  width={400} height={400}>
+          <Pie
+            data={languagesData}
+            dataKey="value"
+            nameKey="name"
+            outerRadius={150}
+            fill="#8884d8"
+            label
+          >
+            {languagesData.map((entry, index) => (
+              <Cell
+                key={`cell-${index}`}
+                fill={dexcol[index % dexcol.length]}
+              />
+            ))}
+          </Pie>
+          <Tooltip />
+          <Legend />
+        </PieChart>
+      </div>
     </div>
   )
 }
